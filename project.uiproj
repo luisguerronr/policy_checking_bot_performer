@@ -1,0 +1,6 @@
+{
+  "Name": "Policy Checking Bot Performer",
+  "ProjectType": "Process",
+  "Description": "Policy Checking Bot Performer for Mail Indexing Module",
+  "MainFile": "Main.xaml"
+}

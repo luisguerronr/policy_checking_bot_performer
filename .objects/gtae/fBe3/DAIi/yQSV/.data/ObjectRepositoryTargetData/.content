@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="G_-LtqCGaEaUB4BHmFTnpg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-dev.usii.com/ucompare/comparisons" CVScreenId="8664bf9b-6473-4fd2-a453-c82411c72257" DesignTimeRectangle="989, 417, 405, 33" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl name='lineOfCoverages' tag='INPUT' type='' class='MuiSelect-nativeInput*' aaname='' matching:name='fuzzy' fuzzylevel:name='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="813707f2-5708-4663-b04e-a6e38a144b61" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="8664bf9b-6473-4fd2-a453-c82411c72257" DesignTimeRectangle="989, 368, 405, 30" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='P' aaname='Line(s) of Coverage' class='MuiTypography-root MuiTypography-*' /&gt;" Guid="0c0e163a-f686-49a7-ad48-964d60d987bf" SearchSteps="Selector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="b7eab3b58183a367bde823f9845a3fab.png" xmlns="">0sWn0LUIL10Kl3niZQUKIQQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

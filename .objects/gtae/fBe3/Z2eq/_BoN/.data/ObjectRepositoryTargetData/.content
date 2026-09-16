@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="UvRpOsWl-UaaojsN61ecIw" Reference="zDuFnmFUUUuYfQVSyWIsXQ/_BoNYKY0UUSZMxHZO36uxQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare/comparisons" CVScreenId="02b979a5-2d8b-45e0-a6a1-86db7da461e1" CvElementArea="945, 366, 275, 34" CvType="InputBox" DesignTimeRectangle="949, 371, 246, 24" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='line(s)-of-coverage-field' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' tag='P' type='' class='MuiTypography-root MuiTypography-body1 css-kh0j90' matching:class='fuzzy' fuzzylevel:class='0.0' aaname='Select lines of coverage' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Select lines of coverage' /&gt;" Guid="3cbb6c72-b553-44a0-8f3c-1ba7d0f68821" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="None">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="02b979a5-2d8b-45e0-a6a1-86db7da461e1" CvTextArea="947, 342, 125, 18" CvTextArgument="Line(s) of Coverage" CvType="Text" DesignTimeRectangle="949, 340, 270, 21" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='line(s)-of-coverage-label' tag='LABEL' type='' class='MuiTypography-root MuiTypography-labelSecondary css-12cq4c5' aaname='Line(s) of Coverage' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Line(s) of Coverage' /&gt;" Guid="f240dc00-fef1-4a61-bb14-8f8a431d9075" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="636ff6e7b52525aea138c7329320fdf7.jpg" xmlns="">0wtuBV3sMn0mw7tW4HOHA4w</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

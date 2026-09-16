@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="sduYXWq3zk-bmu_roM8osQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech.usi.com/ucompare" CVScreenId="f0369418-1976-4b14-b6cc-8137bfb11b92" DesignTimeRectangle="608, 377, 36, 36" ElementType="Icon" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl tag='svg' type='' class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-2eehk0' matching:class='fuzzy' fuzzylevel:class='0.0' aaname='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="0294165a-54ce-4c22-993d-96f4f863cb2b" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None">
+      <imageRef attrName="InformativeScreenshot" originalValue="f3017563a7a785a04873d061c1641427.png" xmlns="">0Jdn18fT3fkWZyXmFZaFQyA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

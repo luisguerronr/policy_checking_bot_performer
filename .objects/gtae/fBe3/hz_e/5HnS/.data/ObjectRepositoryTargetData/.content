@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="e6MOc4pkk0G7r8w7bhesng" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare/comparisons" DesignTimeRectangle="523, 268, 189, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='completed-comparisons-tab' tag='BUTTON' aaname='Completed Comparisons' /&gt;" Guid="503fadb2-5512-4c1e-840f-057baeabaf81" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None">
+      <imageRef attrName="InformativeScreenshot" originalValue="b32da324a62588cb0ed297d142937b35.jpg" xmlns="">0t5nask8cmkW2f_DbaVLPRw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

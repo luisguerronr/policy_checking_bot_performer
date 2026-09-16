@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="EaYPK1VrBkqs3x0k2v0Zig" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare/comparisons" CVScreenId="4c0c2728-62cf-4007-b1d1-812b02bbf5de" CvElementArea="1500, 246, 23, 25" CvType="Icon" DesignTimeRectangle="1505, 250, 14, 17" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='path' /&gt;" Guid="48d8c37b-4038-4193-bfa5-6bb482d7ebcb" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABIAAAAVCAYAAABLy77vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABzSURBVDhP7dCxDYAwDETRzMgs9BmEhpJRaDKT0RWRTDg7QRjR8CV3+Ck4SVDvQ2la6Fj90BdQ3gpd9AY7tdOL5nWnC2zwre7yayNYiyB6Iw9jCDKPzTALQSaENOYhyIUQgB6CutBo8ZA+6p2pxUNPC4JEDrWo+BfgyDLHAAAAAElFTkSuQmCC" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="a3a70faf052db2d1e601feab6701806d.jpg" xmlns="">0fTgVOpcJeEyuYrShBO7RsQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetAttributeGeneric</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

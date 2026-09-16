@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="kGB1cwhza0WZfpAxM8EDeg" Reference="-2QOTLrMAEu8h_3K_9z24g/JENPeMW6W0--Q9pElt9B0Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="dc1-sb-018.usii.com/sagitta/Clients/HOHENINC3/1868670" DesignTimeRectangle="89, 68, 609, 50" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='Confirm Save As' role='pane' /&gt;&lt;ctrl name='*already exists.  Do you want to replace i*' role='text' /&gt;" Guid="2fa84bd8-0dbb-4296-8139-8f73e65ac97b" ScopeSelectorArgument="&lt;wnd app='msedge.exe' title='Confirm Save As' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="217db319389ad86cb37d5a47300d116a.jpg" xmlns="">0rx1Ulx7UoE-SMrWFIMQCEw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

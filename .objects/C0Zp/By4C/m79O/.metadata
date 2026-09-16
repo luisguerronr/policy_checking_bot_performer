@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge Leave site",
+  "Type": "Screen",
+  "Id": "m79OmeChGUOzsYhcC1kkWg",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/m79OmeChGUOzsYhcC1kkWg",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/By4CVkZh5kGi6aq3PBxmmg",
+  "Created": "2026-02-20T14:46:01.7982507Z",
+  "Updated": "2026-02-20T14:46:01.7982507Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

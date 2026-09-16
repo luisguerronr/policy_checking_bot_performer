@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge AIRPAAVI - AMS4",
+  "Type": "Screen",
+  "Id": "esr4Uvw5RUueB0riUWpaAQ",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/esr4Uvw5RUueB0riUWpaAQ",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/eSskYKLzKEGZgeoXT4pkzg",
+  "Created": "2026-02-20T14:00:13.1490128Z",
+  "Updated": "2026-02-20T14:00:13.1490128Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

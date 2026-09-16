@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Templates",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "XIUy5quPl0KSBXNrxVf41Q",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/XIUy5quPl0KSBXNrxVf41Q",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/DAIiEi1noEK_ZjqtAgmFuA",
+  "Created": "2025-12-21T09:55:27.9539713Z",
+  "Updated": "2026-01-14T14:43:26.3807961Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

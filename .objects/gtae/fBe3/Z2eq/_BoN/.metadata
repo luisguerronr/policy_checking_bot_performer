@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Line(s) of Coverage",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "_BoNYKY0UUSZMxHZO36uxQ",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/_BoNYKY0UUSZMxHZO36uxQ",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/Z2eqnod2FEOn8qnu2EzU8A",
+  "Created": "2026-01-23T14:36:15.1629093Z",
+  "Updated": "2026-01-23T14:36:15.1629093Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.24.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

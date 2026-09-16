@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Create Comparison",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "n9V7_W6Kwk2IQDZlD55h1Q",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/n9V7_W6Kwk2IQDZlD55h1Q",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/hz_e0Op-3U6B9rTV1s05Hg",
+  "Created": "2026-03-19T20:01:41.3224267Z",
+  "Updated": "2026-03-19T20:01:41.3224267Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

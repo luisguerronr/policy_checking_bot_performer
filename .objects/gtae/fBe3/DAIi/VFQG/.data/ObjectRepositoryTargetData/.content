@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="m_YJ6ZYx2kWTMBixUdoadQ" Reference="zDuFnmFUUUuYfQVSyWIsXQ/VFQGAbZfCEqhGHLkF-8epA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech.usi.com/ucompare/comparisons" CVScreenId="d498375d-f0e6-434e-85dc-e902f28f88fe" DesignTimeRectangle="396, 374, 245, 33" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='INPUT' class='MuiSelect-nativeInput*' idx='2' /&gt;" Guid="5111a220-6771-416c-8350-4b3661bde400" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target CVScreenId="d498375d-f0e6-434e-85dc-e902f28f88fe" DesignTimeRectangle="396, 338, 294, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='H6' aaname='Line of Coverage' class='MuiTypography-root MuiTypography-subtitle2*' /&gt;" Guid="96e88692-5564-412b-8eff-e03b9edc7379" SearchSteps="Selector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="698108b15012f38f4f6d9201e8a599a0.png" xmlns="">0BSJJil0siUiRTR6g1KkYBw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">SelectItem</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

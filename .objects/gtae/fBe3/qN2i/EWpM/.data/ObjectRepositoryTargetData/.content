@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="QLoS2BCq2EiseB_Xv7bs5Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="dc1-sb-018.usii.com/sagitta/Clients/BLUELSEC/2095811" CVScreenId="d9af6444-c9fb-4ea5-85f8-9316c9897cdc" CvTextArea="1854, 84, 39, 16" CvTextArgument="Close" CvType="Text" DesignTimeRectangle="1852, 82, 45, 28" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aaname='Close' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' class='x-btn-inner' matching:class='fuzzy' fuzzylevel:class='0.0' tag='SPAN' type='' innertext='Close' check:innerText='Close' /&gt;" Guid="8b637b3f-d0d8-460e-891a-717160e9acbd" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='AMS*' title='* - AMS*' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="None">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="d9af6444-c9fb-4ea5-85f8-9316c9897cdc" CvTextArea="1779, 84, 34, 19" CvTextArgument="Help" CvType="Text" DesignTimeRectangle="1777, 82, 39, 28" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Help' class='x-btn-inner' tag='SPAN' type='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Help' /&gt;" Guid="33339e0a-e586-4e4a-9390-c007002e63f7" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="de6eeda0564db3699ab126687eb48a1f.jpg" xmlns="">09YhHt3Z6ekaXyEnzmP_7Kg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

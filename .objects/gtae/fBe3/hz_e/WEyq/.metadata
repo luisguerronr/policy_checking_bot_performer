@@ -1,0 +1,14 @@
+﻿{
+  "Name": "POC-2026-1",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "WEyqF-O6cE-EeK_nDDP9zg",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/WEyqF-O6cE-EeK_nDDP9zg",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/hz_e0Op-3U6B9rTV1s05Hg",
+  "Created": "2026-03-18T22:33:26.0991895Z",
+  "Updated": "2026-03-18T22:33:26.0991895Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

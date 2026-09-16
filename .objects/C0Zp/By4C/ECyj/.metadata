@@ -1,0 +1,16 @@
+﻿{
+  "Name": "ucompare",
+  "Type": "Screen",
+  "Id": "ECyjbbhQZUKfFA9dTa2Kog",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/ECyjbbhQZUKfFA9dTa2Kog",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/By4CVkZh5kGi6aq3PBxmmg",
+  "Created": "2026-02-24T17:03:33.0642143Z",
+  "Updated": "2026-02-24T17:20:32.8044707Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

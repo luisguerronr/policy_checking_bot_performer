@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="KfGjNJHbyUKCH7luceoyiQ" Reference="zDuFnmFUUUuYfQVSyWIsXQ/1oPpAFlC706cB4iXSqyN7Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech.usi.com/ucompare/comparisons" CVScreenId="d498375d-f0e6-434e-85dc-e902f28f88fe" CvElementArea="97, 361, 253, 46" CvType="InputBox" DesignTimeRectangle="107, 422, 405, 33" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='' class='MuiSelect-nativeInput *' matching:class='fuzzy' fuzzylevel:class='0.0' aaname='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="6fb1970b-15c6-468b-80ce-574eae531136" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="None">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="d498375d-f0e6-434e-85dc-e902f28f88fe" CvTextArea="101, 338, 133, 18" CvTextArgument="Line of Business" CvType="Text" DesignTimeRectangle="107, 368, 405, 30" ElementType="Text" FuzzySelectorArgument="&lt;webctrl class='MuiTypography-root MuiTypography-subtitle2 css-qkkwkx' matching:class='fuzzy' fuzzylevel:class='0.0' aaname='Line of Business' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Line of Business' /&gt;" Guid="56bef1b4-357c-42b1-ad6b-3006e5a86339" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="341ee523c8a72fdf130cf544752e9783.png" xmlns="">0TSODQcKWGkGbD7i4ZA9B-A</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

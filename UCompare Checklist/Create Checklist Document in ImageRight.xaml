@@ -1,0 +1,186 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:iwi="clr-namespace:ImageRightAPILibrary.Workflows.Instances;assembly=ImageRightAPILibrary" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uasc="clr-namespace:UiPath.Activities.System.Collections;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_PolicyYearFolderId" Type="InArgument(x:String)" />
+    <x:Property Name="in_CoverageCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_PolicyNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_Year" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_Authorization" Type="InArgument(x:String)" />
+    <x:Property Name="out_ChecklistFileId" Type="OutArgument(x:String)" />
+  </x:Members>
+  <this:Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet.in_CoverageCode>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet.in_CoverageCode>
+  <this:Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet.in_PolicyNumber>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet.in_PolicyNumber>
+  <this:Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet.in_Year>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet.in_Year>
+  <this:Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet.in_Authorization>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet.in_Authorization>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>ImageRightAPILibrary.Workflows.Instances</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>ImageRightAPILibrary</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Create_Checklist_Document_in_ImageRight_and_Upload_UCompare_Spreadsheet" sap:VirtualizedContainerService.HintSize="1080.6666666666667,1208.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:List(scg:Dictionary(x:String, x:String))" Name="listInstance" />
+      <Variable x:TypeArguments="njl:JArray" Name="jarrCreatedInstanceInfo" />
+      <Variable x:TypeArguments="x:String" Name="strChecklistDescription" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Creating 'Checklists Other' document in ImageRight...&quot;]" />
+    <Assign DisplayName="List of Dictionary for Instances" sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:String))">[listInstance]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:String))">[New List(Of Dictionary(Of String, String))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Name/Description for Checklist" sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strChecklistDescription]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_CoverageCode + " " + in_PolicyNumber + " " + in_Year.Substring(in_Year.length - 2) + "-" + (CInt(in_Year)+1).ToString.Substring(in_Year.Length - 2) + " Policy Checked"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uasc:AppendItemToCollection x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:Annotation.AnnotationText="Submission Sub Folder" Collection="[listInstance]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="434,208" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_1">
+      <uasc:AppendItemToCollection.Items>
+        <scg:List x:TypeArguments="InArgument(scg:Dictionary(x:String, x:String))" Capacity="4">
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[new System.Collections.Generic.Dictionary(Of System.String, System.String) From { { "name", "Checklists Other" },{ "typeId", in_Config("ImageRight_ChecklistsOther_TypeId").tostring },{ "typeDescription", "Checklists Other - Checklists Other" },{ "description", strChecklistDescription } }]</InArgument>
+        </scg:List>
+      </uasc:AppendItemToCollection.Items>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uasc:AppendItemToCollection>
+    <iwi:CreateInstanceImageRightAPI DisplayName="CreateInstancesImageRightAPI - Checklists Other" sap:VirtualizedContainerService.HintSize="434,282" sap2010:WorkflowViewState.IdRef="CreateInstanceImageRightAPI_1" in_list_Instance="[listInstance]" in_str_AuthorizationValue="[in_Authorization]" in_str_ParentId="[in_PolicyYearFolderId]" out_jarr_CreatedInstanceInfo="[jarrCreatedInstanceInfo]" />
+    <Assign DisplayName="Assign the Checklists Other File Id we Created" sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_ChecklistFileId]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[CInt(jarrCreatedInstanceInfo(0)("id")).ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;'Checklists Other' document created in ImageRight&quot;]" />
+  </Sequence>
+</Activity>

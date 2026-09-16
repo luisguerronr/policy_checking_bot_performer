@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Close",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "lW6Mo7qY6kS25YXF57Kzwg",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/lW6Mo7qY6kS25YXF57Kzwg",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/AM1ghpIl_kOg1fiKKuNUsw",
+  "Created": "2026-03-12T00:01:13.0239625Z",
+  "Updated": "2026-03-12T00:01:13.0239625Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

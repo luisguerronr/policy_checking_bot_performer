@@ -1,0 +1,17 @@
+﻿{
+  "Name": "File is already downloaded",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "-ZNaarYqwU2wJP1VPE9erg",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/-ZNaarYqwU2wJP1VPE9erg",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/DnR77WWoc0iu3hhfzs5XEw",
+  "Created": "2026-02-24T17:16:11.0141442Z",
+  "Updated": "2026-02-24T17:16:31.0248571Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

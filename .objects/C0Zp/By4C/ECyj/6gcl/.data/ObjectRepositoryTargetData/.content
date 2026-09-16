@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="SjfB5bVrzkC7vLP_C7kozg" Reference="zDuFnmFUUUuYfQVSyWIsXQ/6gcl3pFcM06K04t9d8Rsug" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" CVScreenId="a66d003a-0bbb-4f48-bb8f-80aff0ba1e93" DesignTimeRectangle="155, 149, 90, 45" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='Downloads' role='document' /&gt;&lt;ctrl role='outline item' text='What do you want to do *' /&gt;&lt;ctrl name='Save as' role='push button' /&gt;" Guid="831b0bcc-b0f0-4eef-bb1d-2058ad834de8" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_2' idx='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None">
+      <imageRef attrName="InformativeScreenshot" originalValue="705fc1a47e671e2b9c63910f67c52632.jpg" xmlns="">0lNiLd9S9qE6cAyX3zeuJng</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge U Compare(2)",
+  "Type": "Screen",
+  "Id": "Z2eqnod2FEOn8qnu2EzU8A",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/Z2eqnod2FEOn8qnu2EzU8A",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/fBe3U1Ej5kGcgBH4B0vhlw",
+  "Created": "2026-01-23T14:32:35.8089951Z",
+  "Updated": "2026-01-23T14:32:35.8089951Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.24.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

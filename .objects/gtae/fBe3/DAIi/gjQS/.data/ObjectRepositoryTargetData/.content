@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="G2JF0nx99EOFqKeIcXtBfQ" Reference="zDuFnmFUUUuYfQVSyWIsXQ/gjQSJXELUUOlEqF8qSEoIA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare" CVScreenId="d372744f-07da-4bce-b189-df4a0d9b9ddc" CvElementArea="1455, 476, 73, 34" CvTextArea="1471, 485, 40, 14" CvTextArgument="Select" CvType="Button" DesignTimeRectangle="1456, 477, 70, 32" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='button' tag='BUTTON' class='MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-eg0lc0' aaname='Select' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Select' /&gt;" Guid="6322ae74-5dc2-47dd-a349-e83328af4517" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="d372744f-07da-4bce-b189-df4a0d9b9ddc" DesignTimeRectangle="1472, 483, 38, 20" ElementType="Text" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='P' class='MuiTypography-root MuiTypography-body1 css-10xx8bh' matching:class='fuzzy' fuzzylevel:class='0.0' aaname='Select' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' innertext='Select' tableRow='{0}' check:innerText='Select' /&gt;&quot;, out_index)]" Guid="9617ecf3-9a12-4cc6-8339-2b7b367e3ae2" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="adf000f6be04457401fde7861143b01c.jpg" xmlns="">0wjlfKJHrKkShMZRdtnhwAQ</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData IsString="False" Name="out_index">
+        <ObjectRepositoryVariableData.DefaultValue>
+          <x:Int32>0</x:Int32>
+        </ObjectRepositoryVariableData.DefaultValue>
+      </ObjectRepositoryVariableData>
+    </scg:List>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

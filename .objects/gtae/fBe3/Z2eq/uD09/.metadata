@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Line Of Coverage",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "uD09FX1Zg0mFAIco1s0v7Q",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/uD09FX1Zg0mFAIco1s0v7Q",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/Z2eqnod2FEOn8qnu2EzU8A",
+  "Created": "2026-01-23T14:38:17.3091444Z",
+  "Updated": "2026-03-21T15:49:34.6714759Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.24.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

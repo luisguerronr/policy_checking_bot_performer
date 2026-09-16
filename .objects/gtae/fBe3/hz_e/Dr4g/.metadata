@@ -1,0 +1,14 @@
+﻿{
+  "Name": "POC-2026-32",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "Dr4gkU4SZk-AvFkk9sMucw",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/Dr4gkU4SZk-AvFkk9sMucw",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/hz_e0Op-3U6B9rTV1s05Hg",
+  "Created": "2026-03-19T18:58:27.0420537Z",
+  "Updated": "2026-03-19T18:58:27.0420537Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

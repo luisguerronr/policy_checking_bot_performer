@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="qXxtA7DXGk2RC8Ngqqy3oQ" Reference="-2QOTLrMAEu8h_3K_9z24g/UKVKJmrLY0ScL-nptHneKg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="dc1-sb-018.usii.com/sagitta/Clients/HOHENINC3/1868670" CVScreenId="68630c28-cd7c-48e7-af47-28cb0ead00ab" DesignTimeRectangle="304, 155, 105, 37" DesignTimeScaleFactor="1.5" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd aaname='Confirm Save As' cls='DirectUIHWND' /&gt;&lt;wnd aaname='Yes' cls='Button' title='&amp;amp;Yes' /&gt;" Guid="71c62b3d-434b-4c3c-9713-aab1f40563d2" ScopeSelectorArgument="&lt;wnd app='msedge.exe' title='Confirm Save As' /&gt;" SearchSteps="Selector" Version="V4">
+      <imageRef attrName="InformativeScreenshot" originalValue="f11cc9012ce0b157c32234cfdab86cee.png" xmlns="">f11cc9012ce0b157c32234cfdab86cee.png</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

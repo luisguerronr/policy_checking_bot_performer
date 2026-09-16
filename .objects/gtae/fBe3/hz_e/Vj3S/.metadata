@@ -1,0 +1,17 @@
+﻿{
+  "Name": "NameDate CreatedPOC-202…",
+  "Type": "Element",
+  "TaxonomyType": "Element",
+  "Id": "Vj3SC6aZJ0-QX8Q1Iy8tfw",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/Vj3SC6aZJ0-QX8Q1Iy8tfw",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/hz_e0Op-3U6B9rTV1s05Hg",
+  "Created": "2026-03-18T21:54:26.1521743Z",
+  "Updated": "2026-03-18T22:46:05.5652827Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

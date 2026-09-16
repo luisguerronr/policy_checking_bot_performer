@@ -1,0 +1,738 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="QuerySecondReviewDocuments" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_NewPolicyPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_SagittaJSONPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentPolicyYearFolder" Type="InArgument(x:String)" />
+    <x:Property Name="out_DocumentsFound" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="out_TotalDocumentsCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="in_PriorYearSagittaJSONPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_PolicyId" Type="InArgument(x:String)" />
+    <x:Property Name="in_ClientCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_PolicyYear" Type="InArgument(x:String)" />
+    <x:Property Name="in_PolicyEffectiveDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_ImageRightConnectionString" Type="InArgument(x:String)" />
+    <x:Property Name="in_SqlQueriesPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_PreviousPolicyID" Type="InArgument(x:String)" />
+    <x:Property Name="in_TaskId" Type="InArgument(x:String)" />
+    <x:Property Name="out_DocumentArrayOfPaths" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>eligibilityCheckForCoverageCodeFromPolicyDoc_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="eligibilityCheckForCoverageCodeFromPolicyDoc" sap:VirtualizedContainerService.HintSize="1181.6000000000001,3316" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName=" Query Second Review Documents" sap:VirtualizedContainerService.HintSize="638.4,3292.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="sd:DataTable" Name="dt_CarrierBinder" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dt_CarrierQuote" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dt_CarrierProposal" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dt_USIProposal" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dt_PriorPolicy" />
+        <Variable x:TypeArguments="x:String" Name="str_DocumentPath" />
+        <Variable x:TypeArguments="x:Int32" Default="0" Name="int_OptionalDocsFound" />
+        <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dict_Documents" />
+        <Variable x:TypeArguments="x:String" Name="str_SqlQuery_CarrierBinder" />
+        <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConnection" />
+        <Variable x:TypeArguments="x:String" Name="str_SqlQuery_CarrierQuote" />
+        <Variable x:TypeArguments="x:String" Name="str_SqlQuery_CarrierProposal" />
+        <Variable x:TypeArguments="x:String" Name="str_SqlQuery_USIProposal" />
+        <Variable x:TypeArguments="x:String" Name="str_SqlQuery_PriorPolicy" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log - Start Building Dictionary" sap:VirtualizedContainerService.HintSize="604.8,56.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Starting to build document dictionary for UCompare&quot;]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+      <Assign DisplayName="Initialize And Add Required Documents to Dictionary" sap:VirtualizedContainerService.HintSize="604.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dict_Documents]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary (Of String, String) From {{"New Policy", in_NewPolicyPath}, {"Sagitta",in_SagittaJSONPath}}]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <If Condition="[Not String.IsNullOrEmpty(in_PriorYearSagittaJSONPath)]" DisplayName="Check if Prior Year Sagitta exists" sap:VirtualizedContainerService.HintSize="604.8,424.8" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Add Prior Policy Sagitta" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[dict_Documents("Prior Policy Sagitta")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[in_PriorYearSagittaJSONPath]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <Assign DisplayName="Initialize Optional Docs Counter" sap:VirtualizedContainerService.HintSize="604.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">0</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <TryCatch DisplayName="TryCatch - Query ImageRight Documents" sap:VirtualizedContainerService.HintSize="604.8,2500.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch.Try>
+          <Sequence sap:VirtualizedContainerService.HintSize="568,2246.4" sap2010:WorkflowViewState.IdRef="Sequence_26">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Query ImageRight - Carrier Binder" sap:VirtualizedContainerService.HintSize="534.4,56.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log - Query Carrier Binder" sap:VirtualizedContainerService.HintSize="500.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Querying ImageRight for Carrier Binder&quot;]" />
+              <ui:ReadTextFile File="{x:Null}" Content="[str_SqlQuery_CarrierBinder]" DisplayName="Read SQL Query - Carrier Binder" FileName="[Path.Combine(in_SqlQueriesPath,&quot;Get Supporting Docs - Carrier Binder.sql&quot;)]" sap:VirtualizedContainerService.HintSize="500.8,123.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+              <ui:DatabaseConnect DisplayName="Connect to ImageRight Database" sap:VirtualizedContainerService.HintSize="500.8,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[in_ImageRightConnectionString]" DatabaseConnection="[dbConnection]" />
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="[dt_CarrierBinder]" DisplayName="Run Query - Carrier Binder" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="500.8,147.2" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[str_SqlQuery_CarrierBinder]" TimeoutMS="300000">
+                <ui:ExecuteQuery.Parameters>
+                  <InArgument x:TypeArguments="x:String" x:Key="@PolicyId">[in_PolicyId]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="@ClientCode">[in_ClientCode]</InArgument>
+                </ui:ExecuteQuery.Parameters>
+              </ui:ExecuteQuery>
+              <Assign DisplayName="Extract Documet Path" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_DocumentPath]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[If(dt_CarrierBinder IsNot Nothing AndAlso dt_CarrierBinder.Rows.Count &gt; 0, dt_CarrierBinder(0)("FilePath").ToString, "")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[dt_CarrierBinder IsNot Nothing AndAlso dt_CarrierBinder.Rows.Count &gt; 0]" DisplayName="Check if Carrier Binder Found" sap:VirtualizedContainerService.HintSize="500.8,840" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,452.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Add Binder to Dictionary" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[dict_Documents("Binder")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[str_DocumentPath]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Increment Optional Docs Counter" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log - Carrier Binder Found" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Carrier Binder found and added to dictionary&quot;]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log - Carrier Binder Not Found" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Carrier Binder not found&quot;]" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Query ImageRight - Carrier Quote" sap:VirtualizedContainerService.HintSize="534.4,56.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log - Query Carrier Quote" sap:VirtualizedContainerService.HintSize="500.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Querying ImageRight for Carrier Quote&quot;]" />
+              <ui:ReadTextFile File="{x:Null}" Content="[str_SqlQuery_CarrierQuote]" DisplayName="Read SQL Query - Carrier Quote" FileName="[Path.Combine(in_SqlQueriesPath,&quot;Get Supporting Docs - Carrier Quote.sql&quot;)]" sap:VirtualizedContainerService.HintSize="500.8,123.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="[dt_CarrierQuote]" DisplayName="Run Query - Carrier Quote" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="500.8,147.2" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[str_SqlQuery_CarrierQuote]" TimeoutMS="300000">
+                <ui:ExecuteQuery.Parameters>
+                  <InArgument x:TypeArguments="x:String" x:Key="@PolicyId">[in_PolicyId]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="@ClientCode">[in_ClientCode]</InArgument>
+                </ui:ExecuteQuery.Parameters>
+              </ui:ExecuteQuery>
+              <Assign DisplayName="Extract Documet Path" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_DocumentPath]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[If(dt_CarrierQuote IsNot Nothing AndAlso dt_CarrierQuote.Rows.Count &gt; 0, dt_CarrierQuote(0)("FilePath").ToString, "")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[dt_CarrierQuote IsNot Nothing AndAlso dt_CarrierQuote.Rows.Count &gt; 0]" DisplayName="Check if Carrier Quote Found" sap:VirtualizedContainerService.HintSize="500.8,840" sap2010:WorkflowViewState.IdRef="If_3">
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,452.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Add Carrier Quote to Dictionary" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[dict_Documents("Carrier Quote")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[str_DocumentPath]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Increment Optional Docs Counter" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log - Carrier Quote Found" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Carrier Quote found and added to dictionary&quot;]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log - Carrier Quote Not Found" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Carrier Quote not found&quot;]" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Query ImageRight - Carrier Proposal" sap:VirtualizedContainerService.HintSize="534.4,56.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log - Query Carrier Proposal" sap:VirtualizedContainerService.HintSize="500.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Querying ImageRight for Carrier Proposal&quot;]" />
+              <ui:ReadTextFile File="{x:Null}" Content="[str_SqlQuery_CarrierProposal]" DisplayName="Read SQL Query - Carrier Proposal" FileName="[Path.Combine(in_SqlQueriesPath,&quot;Get Supporting Docs - Carrier Proposal.sql&quot;)]" sap:VirtualizedContainerService.HintSize="500.8,123.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="[dt_CarrierProposal]" DisplayName="Run Query - Carrier Proposal" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="500.8,147.2" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[str_SqlQuery_CarrierProposal]" TimeoutMS="300000">
+                <ui:ExecuteQuery.Parameters>
+                  <InArgument x:TypeArguments="x:String" x:Key="@PolicyId">[in_PolicyId]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="@ClientCode">[in_ClientCode]</InArgument>
+                </ui:ExecuteQuery.Parameters>
+              </ui:ExecuteQuery>
+              <Assign DisplayName="Extract Documet Path" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_DocumentPath]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[If(dt_CarrierProposal IsNot Nothing AndAlso dt_CarrierProposal.Rows.Count &gt; 0, dt_CarrierProposal(0)("FilePath").ToString, "")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[dt_CarrierProposal IsNot Nothing AndAlso dt_CarrierProposal.Rows.Count &gt; 0]" DisplayName="Check if Carrier Proposal Found" sap:VirtualizedContainerService.HintSize="500.8,840" sap2010:WorkflowViewState.IdRef="If_4">
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,452.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Add Carrier Proposal to Dictionary" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[dict_Documents("Carrier Proposal")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[str_DocumentPath]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Increment Optional Docs Counter" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log - Carrier Proposal Found" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Carrier Proposal found and added to dictionary&quot;]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log - Carrier Proposal Not Found" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Carrier Proposal not found&quot;]" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Query ImageRight - USI Proposal" sap:VirtualizedContainerService.HintSize="534.4,56.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log - Query USI Proposal" sap:VirtualizedContainerService.HintSize="500.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Querying ImageRight for USI Proposal&quot;]" />
+              <ui:ReadTextFile File="{x:Null}" Content="[str_SqlQuery_USIProposal]" DisplayName="Read SQL Query - USI Proposal" FileName="[Path.Combine(in_SqlQueriesPath,&quot;Get Supporting Docs - USI Proposal.sql&quot;)]" sap:VirtualizedContainerService.HintSize="500.8,123.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_4" />
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="[dt_USIProposal]" DisplayName="Run Query - USI Proposal" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="500.8,147.2" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[str_SqlQuery_USIProposal]" TimeoutMS="300000">
+                <ui:ExecuteQuery.Parameters>
+                  <InArgument x:TypeArguments="x:String" x:Key="@ClientCode">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ClientCode" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key=" @PolicyYear">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PolicyYear" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="@PolicyEffectiveDate">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PolicyEffectiveDate" />
+                  </InArgument>
+                </ui:ExecuteQuery.Parameters>
+              </ui:ExecuteQuery>
+              <Assign DisplayName="Extract Documet Path" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_DocumentPath]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[If(dt_USIProposal IsNot Nothing AndAlso dt_USIProposal.Rows.Count &gt; 0, dt_USIProposal(0)("FilePath").ToString, "")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[dt_USIProposal IsNot Nothing AndAlso dt_USIProposal.Rows.Count &gt; 0]" DisplayName="Check if USI Proposal Found" sap:VirtualizedContainerService.HintSize="500.8,840" sap2010:WorkflowViewState.IdRef="If_5">
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,452.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Add USI Proposal to Dictionary" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[dict_Documents("USI Proposal")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[str_DocumentPath]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Increment Optional Docs Counter" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log - USI Proposal Found" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;USI Proposal found and added to dictionary&quot;]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log - USI Proposal Not Found" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;USI Proposal not found&quot;]" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Query ImageRight - Prior Year Policy" sap:VirtualizedContainerService.HintSize="534.4,56.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log - Prior Year Policy" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Querying ImageRight for Prior Year Policy using PREVIOUS_POLICY_ID:&quot;+in_PreviousPolicyID]" />
+              <If Condition="[Not String.IsNullOrEmpty(in_PreviousPolicyID)]" DisplayName="Check if PreviouslyPolicID exists" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="If_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="534.4,1284" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ReadTextFile File="{x:Null}" Content="[str_SqlQuery_PriorPolicy]" DisplayName="Read SQL Query - Prior Year Policy" FileName="[Path.Combine(in_SqlQueriesPath,&quot;Get Supporting Docs - Policy.sql&quot;)]" sap:VirtualizedContainerService.HintSize="500.8,123.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_5" />
+                    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="[dt_PriorPolicy]" DisplayName="Run Query - Prior Policy" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="500.8,147.2" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" Sql="[str_SqlQuery_PriorPolicy]" TimeoutMS="300000">
+                      <ui:ExecuteQuery.Parameters>
+                        <InArgument x:TypeArguments="x:String" x:Key="@PolicyId">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PreviousPolicyID" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="@ClientCode">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ClientCode" />
+                        </InArgument>
+                      </ui:ExecuteQuery.Parameters>
+                    </ui:ExecuteQuery>
+                    <Assign DisplayName="Extract Documet Path" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[str_DocumentPath]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[If(dt_PriorPolicy IsNot Nothing AndAlso dt_PriorPolicy.Rows.Count &gt; 0, dt_PriorPolicy(0)("FilePath").ToString, "")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <If Condition="[dt_PriorPolicy IsNot Nothing AndAlso dt_PriorPolicy.Rows.Count &gt; 0]" DisplayName="Check if Prior Policy Found" sap:VirtualizedContainerService.HintSize="500.8,840" sap2010:WorkflowViewState.IdRef="If_6">
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,452.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Add Binder to Dictionary" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[dict_Documents("Prior Policy")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[str_DocumentPath]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Increment Optional Docs Counter" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_20">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[int_OptionalDocsFound + 1]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:LogMessage DisplayName="Log - Prior Year Policy Found" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Prior Year Policy found and added to dictionary&quot;]" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log - Prior Year Policy Not Found" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Prior Year Policy not found&quot;]" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log - Skip Prior Policy Query" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Skipping Prior Policy quey - no PREVIOUS_POLICY_ID provided&quot;]" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Validate Documents Found and Set Outputs" sap:VirtualizedContainerService.HintSize="534.4,1902.4" sap2010:WorkflowViewState.IdRef="Sequence_23">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[int_OptionalDocsFound &gt;= 1]" DisplayName="Check if Optional Documents Found" sap:VirtualizedContainerService.HintSize="500.8,1653.6" sap2010:WorkflowViewState.IdRef="If_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,566.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Set out_DocumentsFound = True" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_21">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[out_DocumentsFound]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Set out_DocumentArrayOfPaths" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_23">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_DocumentArrayOfPaths]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dict_Documents]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Set out_TotalDocumentsCount" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_24">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[out_TotalDocumentsCount]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[dict_Documents.Count]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log - Success" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;SUCCESS: Dictionary built with &quot; + dict_Documents.Count.ToString + &quot; documents (&quot; + int_OptionalDocsFound.ToString + &quot; optional docs found)&quot;]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,916.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Set out_DocumentsFound = False" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_22">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[out_DocumentsFound]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Set out_DocumentArrayOfPaths (Required Only)" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_25">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_DocumentArrayOfPaths]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dict_Documents]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Set out_TotalDocumentsCount" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_26">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[out_TotalDocumentsCount]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[dict_Documents.Count]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log - No Supporting Documents" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Warn" Message="[&quot;No supporting documents found for Second Review&quot;]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetAttributeTaks - No Supporting Docs" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SetAttributeTasks.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_SuccessFlow">False</InArgument>
+                        <InArgument x:TypeArguments="s:String[]" x:Key="in_attributeIdArray">[New String() {"116", "108", "101", "100"}]</InArgument>
+                        <InArgument x:TypeArguments="s:String[]" x:Key="in_taskAttributeValueArray">[New String() {"Automation Inquiry", "Servicer 1", "Second Review Source Not Found", "2"}]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_taskId">[in_TaskId]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:LogMessage DisplayName="Log - Task Reassigned" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Task &quot; + in_TaskId + &quot; reassigned to Servicer 1 - No Supporting Documents Found&quot;]" />
+                  </Sequence>
+                </If.Else>
+              </If>
+              <ui:LogMessage DisplayName="Log - Module Complete" sap:VirtualizedContainerService.HintSize="500.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;QuerySecondReviewDocuments module completed&quot;]" />
+            </Sequence>
+          </Sequence>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="571.2,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+              </ActivityAction.Argument>
+              <Sequence sap:VirtualizedContainerService.HintSize="467.2,623.2" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log - Exception Caught" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[&quot;Error in QuerySecondReviewDocuments: &quot; + ex.Message]" />
+                <Assign DisplayName="Set out_DocumentsFound = False on Error" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_27">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[out_DocumentsFound]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Set out_DocumentArrayOfPaths on Error" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_28">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_DocumentArrayOfPaths]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dict_Documents]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Set out_TotalDocumentsCount on Error" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_29">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[out_TotalDocumentsCount]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Rethrow DisplayName="Rethrow Exception" sap:VirtualizedContainerService.HintSize="433.6,48" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+              </Sequence>
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+    </Sequence>
+  </Sequence>
+</Activity>

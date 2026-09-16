@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge  - AMS",
+  "Type": "Screen",
+  "Id": "pfmFITw45USqv9Ep3v6AeQ",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/pfmFITw45USqv9Ep3v6AeQ",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/fBe3U1Ej5kGcgBH4B0vhlw",
+  "Created": "2026-03-11T23:56:20.552055Z",
+  "Updated": "2026-03-11T23:56:20.552055Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

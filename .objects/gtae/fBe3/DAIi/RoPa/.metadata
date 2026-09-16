@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Comparison successfully…",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "RoPaZ7B4t06YwU3DIRXw-w",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/RoPaZ7B4t06YwU3DIRXw-w",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/DAIiEi1noEK_ZjqtAgmFuA",
+  "Created": "2026-02-03T10:55:12.9328635Z",
+  "Updated": "2026-02-03T10:55:12.9328635Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.24.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

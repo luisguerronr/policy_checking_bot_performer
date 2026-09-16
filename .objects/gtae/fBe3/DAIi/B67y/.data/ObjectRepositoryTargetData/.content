@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="mGONP2dY7Eex68IoT93bgw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech.usi.com/ucompare" CVScreenId="7c33cddc-5ec4-44ee-a709-354c4883d84b" DesignTimeRectangle="206, 489, 107, 36" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl isleaf='1' tag='P' aaname='0 Records' /&gt;" Guid="3e451b8d-6bfb-43b6-bc7a-e2eb368dcfe9" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None">
+      <imageRef attrName="InformativeScreenshot" originalValue="2fcbae0044aa3e0b4dd555625ab7f07e.png" xmlns="">019C2P8pXGESG79FHpelHiw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

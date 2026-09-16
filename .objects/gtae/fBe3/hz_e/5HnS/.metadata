@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Completed Comparisons",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "5HnSdJjlCEe1O7VDjQ1WBQ",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/5HnSdJjlCEe1O7VDjQ1WBQ",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/hz_e0Op-3U6B9rTV1s05Hg",
+  "Created": "2026-03-19T18:28:33.2797295Z",
+  "Updated": "2026-03-19T18:28:33.2797295Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

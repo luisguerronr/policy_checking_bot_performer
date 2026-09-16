@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="RNDDjY2FEEuuFNb6gfuC6A" Reference="zDuFnmFUUUuYfQVSyWIsXQ/3mglaIho9UqfAkWKR_XdGA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="1912, -8, 1936, 1056" BrowserType="Edge" ContentHash="jS8U3Z147UmIG0o5935igw" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAACMQAAAjEBdwUAWQAAAedJREFUOE/tketL02EUxx8oemdQEkTRDaNGpBI1ks1or7q8KCnEGgYalDqnpjVjbWlQdFk3ChSUZlrLXWpzbripU4pCu5gLkth8ISRLqJCc0UUs4dOzn2/7D+r75jnncJ4P33OO+C8htpg6LqrPhFh5zMk6g5vN1V4Zt5NR7iHD4GGFjFcdd7Je5qmeDUYvufU901knvLsVwDZziCVFDsqbB9h7oZulRfcx3hkk1xpEfbqTc+4oRxueorEEMcieHeYA6SV+tNZgjwJQVXlJO3SX5PdZWvpHSde3MvNrDtfAGJNfZ7D53xJLTGFtf83P2TlOtb1EFDxgq6ljHpBd40PsaiD8JkGl/TlCd5vhsUkKbz0hKt+uaILG0DuWFzuU+s66Lhbonahr/WEFkJUC7GlkcPQTNa0vEJobvP/8Df3Nxxy29XHkah8j41NcD4zwLPYRXf3fANJBnXOYiS8/CA6NE/uQJP9aPynZe+PEJ5I0R+JyhN+YHUPzI9T6uxVAjiXMwnw7Yl8TeVcimO69Uja/qKAFnbRbLBd4ULpYXNhG3uUImVWPWFbaidYS6BUaW5rIPum7tN0aJrPax5pSl3KqjRUPlXOuLXOzusSl1DfJj6lYVeFFezY8rTJ6Doj9TecVF/+0hPgD1As1jwb7Tn0AAAAASUVORK5CYII=" Reference="zDuFnmFUUUuYfQVSyWIsXQ/3mglaIho9UqfAkWKR_XdGA" Selector="&lt;html app='msedge.exe' title='U Compare' /&gt;" Url="https://*.usii.com/ucompare/" Version="V2">
+      <TargetApp.Arguments>
+        <p:InArgument x:TypeArguments="x:String" />
+      </TargetApp.Arguments>
+      <TargetApp.WorkingDirectory>
+        <p:InArgument x:TypeArguments="x:String" />
+      </TargetApp.WorkingDirectory>
+      <imageRef attrName="InformativeScreenshot" originalValue="8587b2819c816063bc3d166ebf1eb94b.jpg" xmlns="">0xW6O7noBuESEjMHZqiMd6A</imageRef>
+    </TargetApp>
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

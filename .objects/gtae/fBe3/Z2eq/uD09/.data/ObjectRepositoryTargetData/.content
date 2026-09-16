@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="vwSVRWAMikiPMVpfrD0beQ" Reference="zDuFnmFUUUuYfQVSyWIsXQ/uD09FX1Zg0mFAIco1s0v7Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare/comparisons" CVScreenId="37e693da-2f50-4170-a913-4e3d872b28a2" DesignTimeRectangle="949, 407, 255, 44" ElementType="ListItem" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='option' tabindex='*' tag='LI' aaname='{0}' innertext='{0}' /&gt;&quot;, LOC)]" Guid="47772af6-6c32-4015-974d-be5c5cc83ba3" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None">
+      <imageRef attrName="InformativeScreenshot" originalValue="bd5b62a6b7fb1ea23e6fea73752cb03a.jpg" xmlns="">0WHpY_-PfuUmhf5GWWvf_RQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData DefaultValue="*" Name="LOC" />
+    </scg:List>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

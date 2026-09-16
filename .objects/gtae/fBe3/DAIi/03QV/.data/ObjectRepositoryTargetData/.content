@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="KwOE-_3x7kK6rt3Is2L6Hw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-dev.usii.com/ucompare/comparisons" CVScreenId="63c4c33f-5676-4c35-99ab-c7853fcda484" DesignTimeRectangle="287, 607, 307, 25" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" Guid="5dae137c-d6ba-49a7-b814-3d14d4f14266" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='#32770' title='Open' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target CVScreenId="63c4c33f-5676-4c35-99ab-c7853fcda484" DesignTimeRectangle="196, 606, 79, 25" ElementType="Text" FullSelectorArgument="&lt;wnd title='File &amp;amp;name:' aaname='File name:' /&gt;" Guid="2e9c0ac2-94d3-490a-959f-63ecc3e72298" SearchSteps="Selector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="0c5d12e3c0425eb12de5afb61f8b697a.png" xmlns="">0d1tRgoQIYk2zCO59JoTzbQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

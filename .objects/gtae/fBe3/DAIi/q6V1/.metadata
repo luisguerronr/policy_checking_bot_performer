@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Select Document Type",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "q6V14zPPuEG8Ps9tQJTBnQ",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/q6V14zPPuEG8Ps9tQJTBnQ",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/DAIiEi1noEK_ZjqtAgmFuA",
+  "Created": "2026-01-16T12:58:03.55305Z",
+  "Updated": "2026-03-20T00:07:35.9569971Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.24.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

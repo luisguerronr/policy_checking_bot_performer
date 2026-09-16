@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="XP6uowZfokePjMEKI39hDg" Reference="zDuFnmFUUUuYfQVSyWIsXQ/ECyjbbhQZUKfFA9dTa2Kog" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="0, 0, 0, 0" ContentHash="lHAMeDa1Mkyw9QjTSk3_Dg" Reference="zDuFnmFUUUuYfQVSyWIsXQ/ECyjbbhQZUKfFA9dTa2Kog" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin*' idx='*' /&gt;" Url="[Nothing]">
+      <TargetApp.Arguments>
+        <p:InArgument x:TypeArguments="x:String" />
+      </TargetApp.Arguments>
+      <TargetApp.WorkingDirectory>
+        <p:InArgument x:TypeArguments="x:String" />
+      </TargetApp.WorkingDirectory>
+    </TargetApp>
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

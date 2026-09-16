@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="1HJPgGePCEO5Fz9y-y9h3Q" Reference="zDuFnmFUUUuYfQVSyWIsXQ/tLzB8Qx26kSutOFSkhHi7Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare/comparisons" CVScreenId="e3825794-b52c-45a2-b9c3-2efc96114ed1" CvTextArea="1175, 382, 113, 17" CvTextArgument="[string.Format(&quot;{0}&quot;, str_Date)]" DesignTimeRectangle="1160, 363, 324, 57" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='2' tag='TD' aaname='{0}' /&gt;&quot;, str_Date)]" Guid="5409f419-65b8-4c25-9d84-0078850ab960" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target CVScreenId="e3825794-b52c-45a2-b9c3-2efc96114ed1" CvElementArea="1500, 378, 23, 24" CvType="Icon" DesignTimeRectangle="1500, 379, 24, 24" ElementType="Icon" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='svg' /&gt;" Guid="540f0cd0-8faf-411d-8756-1604e14b1a8f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACBSURBVEhL7dKxDYAwDETRzMgs9AxCQ8koaZjJ6LogWY4vBGRBvnQd8AQkycsNsHuxwTSt6pgGeEnDMKafg8t+qIA13GNVfcN5y+qDteHaWq5P6kE9GHL/Qwv1Yog6NBrKYIgCUYmyGKJBBKgFQ03gnWKB5eFgZhULfKIBdu/roMgJRxlKKLhjAjkAAAAASUVORK5CYII=" SearchSteps="Selector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="388ba2bcc61efd337e3b704b43283672.jpg" xmlns="">0kjwJ-6NK7k6f3T8CnSuHAA</imageRef>
+    </TargetAnchorable>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData Name="str_Date" />
+    </scg:List>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

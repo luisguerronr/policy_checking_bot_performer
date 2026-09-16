@@ -1,0 +1,114 @@
+{
+  "name": "Policy Checking Bot Performer",
+  "projectId": "37201350-64df-49de-af62-944a1b4aa1ab",
+  "description": "Policy Checking Bot Performer for Mail Indexing Module",
+  "main": "Main.xaml",
+  "dependencies": {
+    "ImageRightAPILibrary": "[1.0.27]",
+    "Sagitta.Json.Extract.Library": "[1.0.24]",
+    "UiPath.Database.Activities": "[2.0.0]",
+    "UiPath.DocumentUnderstanding.Activities": "2.16.1",
+    "UiPath.DocumentUnderstanding.Digitizer": "[4.9.2]",
+    "UiPath.DocumentUnderstanding.ML.Activities": "[1.36.2]",
+    "UiPath.Excel.Activities": "[3.3.1]",
+    "UiPath.IntegrationService.Activities": "[1.24.0]",
+    "UiPath.IntelligentOCR.Activities": "[6.27.2]",
+    "UiPath.PDF.Activities": "[3.25.0]",
+    "UiPath.System.Activities": "[25.10.5]",
+    "UiPath.Testing.Activities": "[25.10.0]",
+    "UiPath.UIAutomation.Activities": "[25.10.26]",
+    "UiPath.WebAPI.Activities": "[2.3.2]",
+    "UiPath.Word.Activities": "[2.3.1]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "25.10.1.0",
+  "projectVersion": "1.0.46",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "NewtonsoftJson",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "5d11dee9-704e-4178-90c8-5d7d5cd62de1",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\GetTransactionDataTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "0a992a7d-063e-4d75-b693-abc8c6676c8b",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\InitAllApplicationsTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "fd787831-a346-4cfd-ab06-59961a80b25e",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\InitAllSettingsTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "352f049b-b9a8-4fde-a810-149caf97fc1a",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\MainTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "6a820e85-f549-48c7-8764-b22fa8482bc5",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\ProcessTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "9e28e3c3-a3de-4ac0-8d4c-b505af01ce38",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+      }
+    ],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "2d5d3e2b-9db2-4941-b901-bdb16cf71382",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}

@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Check Download Button",
+  "Type": "Element",
+  "TaxonomyType": "Icon",
+  "Id": "vmxhxmTJ3EqMlOJ8SOUEww",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/vmxhxmTJ3EqMlOJ8SOUEww",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/hz_e0Op-3U6B9rTV1s05Hg",
+  "Created": "2026-03-18T22:52:31.1631653Z",
+  "Updated": "2026-03-19T22:53:02.4461917Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

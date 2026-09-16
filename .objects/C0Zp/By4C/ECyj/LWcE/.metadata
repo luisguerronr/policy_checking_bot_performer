@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Click 'Downloads, file require…'",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "LWcEmZvgu0OfkKoGCjfJ7g",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/LWcEmZvgu0OfkKoGCjfJ7g",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/ECyjbbhQZUKfFA9dTa2Kog",
+  "Created": "2026-02-24T17:09:47.0969752Z",
+  "Updated": "2026-02-24T17:09:47.0969752Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

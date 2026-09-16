@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="fhj5m_SVAk-m8Gk--BOHug" Reference="zDuFnmFUUUuYfQVSyWIsXQ/vmxhxmTJ3EqMlOJ8SOUEww" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare/comparisons" CVScreenId="35890a6d-fbaa-4861-a483-1d16e13e1591" DesignTimeRectangle="1524, 403, 24, 24" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl parentid='comparisons-download-btn-0' tag='svg' rowName='{0}' /&gt;&quot;, pattern)]" Guid="9ed4d3b8-67b4-4ce8-8b6c-37e36fd0bbbe" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None">
+      <imageRef attrName="InformativeScreenshot" originalValue="81cfa99f017920b27f640c238e3ad668.jpg" xmlns="">0g0z3qTlH4U2ZoSz_a5McMg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData DefaultValue="*" Name="pattern" />
+    </scg:List>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="zatLX5LizkiAMyX5gfjJkA" Reference="zDuFnmFUUUuYfQVSyWIsXQ/HEoD_el8z0OU6HKjGcBI-A" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare/comparisons" CVScreenId="97912278-ef19-490b-b345-6f0b61e65ed1" DesignTimeRectangle="1500, 521, 24, 24" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl parentid='comparisons-download-btn-0' tableRow='2' tag='svg' /&gt;" Guid="fb1eafe7-411d-4a41-9c83-fa2fe61e8ec0" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="97912278-ef19-490b-b345-6f0b61e65ed1" DesignTimeRectangle="1160, 505, 324, 57" ElementType="Text" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' matching:isleaf='fuzzy' fuzzylevel:isleaf='0.0' type='' tag='TD' class='MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1l7hpo5' matching:class='fuzzy' fuzzylevel:class='0.0' aaname='{0}' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' visibleinnertext='{0}' /&gt;&quot;, todayText)]" Guid="9ccf12a9-5003-4057-88f2-d0ae9983ab9e" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="aa2d8b774b97eec718d8ee899a786596.jpg" xmlns="">068nwkEA_G02e3PG9mHEYcA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetAttributeGeneric</x:String>
+    <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
+      <ObjectRepositoryVariableData DefaultValue="*" Name="todayText" />
+    </scg:List>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

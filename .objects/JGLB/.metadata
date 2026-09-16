@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Edge U Compare(1)",
+  "Type": "App",
+  "Id": "JGLBiCx7_U-IIFKti9jj_A",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/JGLBiCx7_U-IIFKti9jj_A",
+  "Created": "2026-03-18T20:04:28.4382759Z",
+  "Updated": "2026-03-18T20:04:28.4382759Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

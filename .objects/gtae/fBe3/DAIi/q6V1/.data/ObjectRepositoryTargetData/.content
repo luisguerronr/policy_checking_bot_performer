@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="-st41JCGbESTFYcx67KZJw" Reference="zDuFnmFUUUuYfQVSyWIsXQ/q6V14zPPuEG8Ps9tQJTBnQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="utech-qa.usii.com/ucompare/comparisons" CVScreenId="cbbc7608-36da-41db-ab04-4cfc74d68bc5" DesignTimeRectangle="637, 810, 300, 33" ElementType="DropDown" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='DIV' colName='Document Type' aria-haspopup='listbox' innertext='Select document type' /&gt;" Guid="f49b493e-c320-40a8-99a9-486145976e96" ScopeSelectorArgument="&lt;html app='msedge.exe' title='U Compare' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None">
+      <imageRef attrName="InformativeScreenshot" originalValue="4eac607b3785553bf709c74a3fe1ec80.jpg" xmlns="">0pGuW8AS5Y0CcX9vofS0KGQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">SelectItem</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Documents (pinned)",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "UUPglGBcqEW0PcUmLWPTkA",
+  "Reference": "zDuFnmFUUUuYfQVSyWIsXQ/UUPglGBcqEW0PcUmLWPTkA",
+  "ParentRef": "zDuFnmFUUUuYfQVSyWIsXQ/ECyjbbhQZUKfFA9dTa2Kog",
+  "Created": "2026-02-24T17:14:11.3377279Z",
+  "Updated": "2026-02-24T17:14:11.3377279Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.26.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

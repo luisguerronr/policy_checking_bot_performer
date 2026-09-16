@@ -1,0 +1,586 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Navigation_to_specific_policy_for_the_client" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uiascb="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_queryExecutionStatus_Retrieve.Bundle;assembly=CF005E5CDB6_queryExe.GTWu63CW5KD1MoAiT2YvRLo2" xmlns:uiascb1="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_queryExecutionResults_List_CBYJBLHRUD9HO3FLTFGDOXVLRAW31AB.Bundle;assembly=CF005E5CDB6_queryExe.b6VHt3J4AtJ1kCkJC3XihkC" xmlns:uiascb2="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_executeQuery_List_CDMZM20LL3STVKBI3HMEGXBQL0RSZ42.Bundle;assembly=CF005E5CDB6_executeQ.sqKOM2yuTCC1bogDI1dPqoj2" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_MatchType" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_AppropriatePolicyNumber" Type="OutArgument(x:String)" />
+    <x:Property Name="in_policyNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_clientCode" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>871.3333333333334,4402.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Navigation_to_specific_policy_for_the_client_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Helpers.TypeDetailsCustomization</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_executeQuery_List_CDMZM20LL3STVKBI3HMEGXBQL0RSZ42.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_executeQuery_List_CDMZM20LL3STVKBI3HMEGXBQL0RSZ42.Bundle</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Mail.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities.Enums</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.C5D2F5448FB_queryExecutionStatus_Retrieve.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_queryExecutionResults_List_CBYJBLHRUD9HO3FLTFGDOXVLRAW31AB.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_queryExecutionStatus_Retrieve.Bundle</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+      <AssemblyReference>Microsoft.Extensions.DependencyModel</AssemblyReference>
+      <AssemblyReference>CF005E5CDB6_executeQ.sqKOM2yuTCC1bogDI1dPqoj2</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>C5D2F5448FB_queryExe.yKTdLdoqMD1onJJI3nJaSA2</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable4</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable3</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable6</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable5</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable1</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable2</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>CF005E5CDB6_queryExe.b6VHt3J4AtJ1kCkJC3XihkC</AssemblyReference>
+      <AssemblyReference>CF005E5CDB6_queryExe.GTWu63CW5KD1MoAiT2YvRLo2</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Navigation_to_specific_policy_for_the_client" sap:VirtualizedContainerService.HintSize="662,5359.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="scrapedDatatable" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="521.6,5336" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="520,4827.2" sap2010:WorkflowViewState.IdRef="Sequence_40">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="scg:List(x:String)" Default="[new list(Of string)]" Name="policyList" />
+            <Variable x:TypeArguments="x:String" Name="getPolicyNumbersSagitta" />
+            <Variable x:TypeArguments="uiascb2:executeQuery_List[]" Name="policyNumbers" />
+            <Variable x:TypeArguments="x:Int32" Default="200" Name="limit" />
+            <Variable x:TypeArguments="x:Int32" Default="0" Name="offset" />
+            <Variable x:TypeArguments="uiascb1:queryExecutionResults_List[]" Name="queryResults" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dtPolicyNumbers" />
+            <Variable x:TypeArguments="uiascb:queryExecutionStatus_Retrieve" Name="queryStatus" />
+            <Variable x:TypeArguments="x:String" Name="queryId" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="" Content="[getPolicyNumbersSagitta]" DisplayName="Read Get Policy Numbers Query Text File" FileName="[path.combine(in_config(&quot;SharedFolderPath&quot;).tostring,&quot;Sagitta Snowflake Query&quot;,in_config(&quot;SagittaSnowflakeGetPolicyNumbers&quot;)+&quot;.txt&quot;)]" sap:VirtualizedContainerService.HintSize="486.4,127.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ReadTextFile>
+          <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACu1VzW4bNxB+FYLHQnVto+hBN0l2U6F2pWjVBEFgGPTurJYVRa75I3kjGOhr9PX6JJkhd+VVErk9F4UOWg45H2e++Wa45z9LUIWbGO2F1GD5cM8zEDavxIOCtMmHH+8GfKrr4A+GPf9NbIAP+WMA2/ABv5KuVqJprW87K7jcytpLo9E6t2YrC2CCbYWSBcu02ZVKrIF1KMumJnfnrdQrXGfG+pktKK6LiCZXCLRPUY9ywk3RpO/WPavM7hacEytwCHL4HH7kBZQiKN+aOOa1CCpu7fkCyoj7RWZTN1HICBR86G0AMrw3dl0qs7t+qi0ixey6PaTSeaH9O6ECdOYOOhpjIN/xu2f8DfjcOHngR25E4gGe/FiZfH3E9RfBp2NoXxpmASmDLTBfAcP7fXDMlEy4RueVNdrgmhKS4AYsOGBvwLNYJXb9BHmgCFgW/c7YtOzDSMdcyHO8tAzqtPMCHMaG3h9MYLnQ8SDBpIPTK1Zas4kWEzxqiXmDQKg54YHNkinLK9gItqukAgRAEbx2F0cGB/8lLSzgMcgeejx3Y3LRCmRsihRFL+c5hqN98ngeHPflUqy+3ZrMp52j9lxiaR67XccQlynxAMph0YRnTVtX4b3IK6oe0L/UhcSuDkK1zsaylTWhJv21kqPDFSg02ZXQ8hOOAF0gmIeVsbREVWxYiZ7einxNZacDFmrsf1rVwdbGxQq+MiIuB/zGmHWoaUTMHv6A3PfZuKe07qX2YLVQvDvcFoe//f168eF+OXqDO3PhKzT98JofQcfyvTiSHF+G1I0Rxbi5SirrStpr9wxyowtq+K9VfHey+DM9EXorXFtxPJh658Ronl6dUEDaOCEAan3YoK7+/vMvx4KWaGZw6L/o+/qsJimDw7RLoVxUvasxtV4XpPUkUP+fVHzKLWr+Fh+ozise6xhA9qaxz3LAZsAcsVBIxJ6/w/8Ec3F2fnaOKNiQGlVh7K/QoDnIGgv9veveoZcvPEvF2ErftHl2gQ6OlZVIgREN2u7V+8X7+hZ8ZTBEKrinAlNSCrVedLgtQJpqwEa6aefcqDe0FeFNsM+g6KmVsnvu7GNrdg7sFAvW2tt3BHNspTTHpsIR1+fj8sdjQtpoDk9yf6/vd/HT2eWBg2NdHTLpPzodJ/9I2qymlyBdM7GAXH/F5Cxb9nrzWyA3Qq8CDXO8Q9O4F09zXGbIO46H83NEFG6M6DRjJhWeJi5bif7/6P7bR/czL5MXdzcKAAA=" ConnectionId="2b240384-5359-4ae1-a810-66f005e5cdb6" DisplayName="Execute Any Query Asynchronously - Get Policy Numbers" sap:VirtualizedContainerService.HintSize="486.4,342.4" sap2010:WorkflowViewState.IdRef="ConnectorActivity_1" UiPathActivityTypeId="dc47c291-3b54-3838-ac57-63043942ea6d">
+            <isactr:ConnectorActivity.FieldObjects>
+              <isactr:FieldObject Name="query" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">[getPolicyNumbersSagitta.Replace("+in_clientCode+",in_clientCode).ToString]</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="out_queryID" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <OutArgument x:TypeArguments="x:String">[queryId]</OutArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="queryTag" Type="FieldArgument" />
+            </isactr:ConnectorActivity.FieldObjects>
+          </isactr:ConnectorActivity>
+          <ui:BuildDataTable DataTable="[dtPolicyNumbers]" DisplayName="Build Data Table - Policy Numbers" sap:VirtualizedContainerService.HintSize="486.4,96" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;POLICY_NUMBER&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+          <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[queryStatus.status &lt;&gt; &quot;SUCCESS&quot;]" DisplayName="Do While - Query Status Is Not Succes" sap:VirtualizedContainerService.HintSize="486.4,954.4" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+            <ui:InterruptibleDoWhile.Body>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484.8,820" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACo1V227aQBD9FWufKSG0yQNSHsA4iRtusU1QVVVoYyawxey6eyGhCKm/0d/rl3TWN0JD0ogX75nZszNnLmzJJYNkplzBNWUcJGltSQhUxgt6n0BuJK2v32rE56nRFbAlA7oC0iI/DMiN3yU10mUqTeimwG8t7uQGULFkqWaCoyFagJNdcpSmGlbA9Z9fv5VjOEPYgSeIjXXN70ab1LIpLRmf4zkUUg/lzAZ6mjGzOZJuyUgoVjwwkmxF5YbsaiSAH4ZJmJGWlgZqebI9EdPSleoFkvqqD3ohZiMqMXhtya3/DrMeGn00bRu7US+yDiv4lZz36VUMb6TYrBGPm1X28B1NTPbE2HW9MMT09lgwHgz8wdUBdjv2xl73AOr0hu7NP1jgheM+3p1O2oF3PRyH3oH5su33vO504kfXUy8IhsGrVn/g+l1vEBErmxUelCatB5ooFD4AlQquoCxEeXaNxB54tT65+qjJkLuUr6kqCoMhFIJ/ZnqaKeuVwu5LcKQfj8h/WKl9PcbMdkfd5xrmGKRlBrlmMdTbsWZr7DZQ9XDicZ1/upeNxpl35nY750cjmgaAFYY11DuGzxKov+lUc47x1a+iiTn/6E7ObrqnfdFmUfPLOuiJZs25A6mQ5uK03rA/vG8SbSRccDBa0qTmjMx9wuIb2ERiCfyCmyQh/6/UO0tihwhrkXmX04MD6HPUmcdQTRa6Y/vksSJbFi2S4f7hEGshMTyEDUtR+w+Ki8eHhC5h/4W+hfybok5lC2FE99+R4/leetkU11qn+bCjzxVouyVsdgn7CbOSuaBAs9NWGx4vpODCKCfvoYrUqVhdGi8AVRJLk2azYdPclXhHikcF0sdlV+DFisJki+U6ovGSzuG5MM1Ph8qUG+aZEpXt+b3T83qzEuPYDByJ/z3KDVPIx8AujaJLXwjqRQhlW7VFTvJhg0zC7OmTbfFvsTupxq9H+dxg6ngBOJ779GmExxDrgfuv0cAXqOpIoEvcju4Cva24RbNG8KQ7iYiXmYy7v44qP7fOBgAA" ConnectionId="2b240384-5359-4ae1-a810-66f005e5cdb6" DisplayName="Get Asynchronous Query Execution Status - Get Policy Numbers" sap:VirtualizedContainerService.HintSize="451.2,220" sap2010:WorkflowViewState.IdRef="ConnectorActivity_7" UiPathActivityTypeId="6d245298-fbf3-3629-ad85-dc73c8fb787d">
+                  <isactr:ConnectorActivity.FieldObjects>
+                    <isactr:FieldObject Name="queryID" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <InArgument x:TypeArguments="x:String">[queryId]</InArgument>
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                    <isactr:FieldObject Name="out_status" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <OutArgument x:TypeArguments="x:String" />
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                    <isactr:FieldObject Name="Jit_queryExecutionStatus" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <OutArgument x:TypeArguments="uiascb:queryExecutionStatus_Retrieve">[queryStatus]</OutArgument>
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                  </isactr:ConnectorActivity.FieldObjects>
+                </isactr:ConnectorActivity>
+                <If Condition="[queryStatus.status = &quot;FAILED&quot; OrElse queryStatus.status = &quot;CANCELED&quot;]" DisplayName="If - Query Status Failed Or Canceled" sap:VirtualizedContainerService.HintSize="451.2,418.4" sap2010:WorkflowViewState.IdRef="If_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,181.6" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Throw DisplayName="Throw - Snowflake Async Query Failed" Exception="[New SystemException(&quot;Snowflake async query failed with status: &quot; + queryStatus.status)]" sap:VirtualizedContainerService.HintSize="416,117.6" sap2010:WorkflowViewState.IdRef="Throw_7" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_65">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <Delay DisplayName="Delay - Wait Before Query Status Retry" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="451.2,117.6" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              </Sequence>
+            </ui:InterruptibleDoWhile.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InterruptibleDoWhile>
+          <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[queryResults.Count = limit]" DisplayName="Do While - Query Results Count Equals Limit" sap:VirtualizedContainerService.HintSize="486.4,786.4" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+            <ui:InterruptibleDoWhile.Body>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="449.6,652" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <isactr:ConnectorActivity Configuration="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" ConnectionId="2b240384-5359-4ae1-a810-66f005e5cdb6" DisplayName="Get Query Execution Results - Get Policy Numbers" sap:VirtualizedContainerService.HintSize="416,357.6" sap2010:WorkflowViewState.IdRef="ConnectorActivity_5" UiPathActivityTypeId="72df7cc6-a4a5-3731-b360-9bdee020a910">
+                  <isactr:ConnectorActivity.FieldObjects>
+                    <isactr:FieldObject Name="queryID" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <InArgument x:TypeArguments="x:String">[queryId]</InArgument>
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                    <isactr:FieldObject Name="generateSchema" Type="FieldArgument" />
+                    <isactr:FieldObject Name="Jit_queryExecutionResults" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <OutArgument x:TypeArguments="uiascb1:queryExecutionResults_List[]">[queryResults]</OutArgument>
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                    <isactr:FieldObject Name="filter" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <InArgument x:TypeArguments="x:String" />
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                    <isactr:FieldObject Name="offset" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <InArgument x:TypeArguments="x:Int32">[offset]</InArgument>
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                    <isactr:FieldObject Name="limit" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <InArgument x:TypeArguments="x:Int32">[limit]</InArgument>
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                  </isactr:ConnectorActivity.FieldObjects>
+                </isactr:ConnectorActivity>
+                <ui:ForEach x:TypeArguments="uiascb1:queryExecutionResults_List" CurrentIndex="{x:Null}" DisplayName="For Each CurrentItem" sap:VirtualizedContainerService.HintSize="416,60.8" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[queryResults]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="uiascb1:queryExecutionResults_List">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="uiascb1:queryExecutionResults_List" Name="CurrentItem" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="449.6,279.2" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{CurrentItem.POLICY_NUMBER}]" DataTable="[dtPolicyNumbers]" DisplayName="Add Data Row - Policy Number" sap:VirtualizedContainerService.HintSize="416,215.2" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ForEach>
+                <Assign DisplayName="Assign - Offset" sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[offset]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[offset + limit]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ui:InterruptibleDoWhile.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InterruptibleDoWhile>
+          <Assign DisplayName="Assign - Policy List From DataTable" sap:VirtualizedContainerService.HintSize="484.8,178.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[policyList]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)" xml:space="preserve">[dtPolicyNumbers.AsEnumerable().
+    Select(Function(r) r("POLICY_NUMBER").ToString).
+    Distinct().
+    ToList()]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,60.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484.8,766.4" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <isactr:ConnectorActivity sap2010:Annotation.AnnotationText="Get list of policy numbers from Sagitta for in_clientCode" Configuration="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" ConnectionId="2b240384-5359-4ae1-a810-66f005e5cdb6" DisplayName="Execute Snowflake Select Query" sap:VirtualizedContainerService.HintSize="451.2,351.2" sap2010:WorkflowViewState.IdRef="ConnectorActivity_2" UiPathActivityTypeId="5ca126ac-2f00-3648-a11f-ae1f4f91bbc2">
+                  <isactr:ConnectorActivity.FieldObjects>
+                    <isactr:FieldObject Name="query" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <InArgument x:TypeArguments="x:String">[getPolicyNumbersSagitta.Replace("+in_clientCode+",in_clientCode).ToString]</InArgument>
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                    <isactr:FieldObject Name="generateSchema" Type="FieldArgument" />
+                    <isactr:FieldObject Name="Jit_executeQuery" Type="FieldArgument">
+                      <isactr:FieldObject.Value>
+                        <OutArgument x:TypeArguments="uiascb2:executeQuery_List[]">[policyNumbers]</OutArgument>
+                      </isactr:FieldObject.Value>
+                    </isactr:FieldObject>
+                  </isactr:ConnectorActivity.FieldObjects>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </isactr:ConnectorActivity>
+                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="451.2,355.2" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[policyNumbers]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="449.6,233.6" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="scg:List(x:String)">[policyList]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="scg:List(x:String)">[policyNumbers.Select(Function(p) p.POLICY_NUMBER).ToList()]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484.8,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;List of policy code available: &quot;+ String.Join(&quot;, &quot;, policyList)]" />
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="' === Policy Number Best Match ===&#xA;' Inputs (Data Manager):&#xA;'   in_PolicyNumber  As String&#xA;'   policyList    As System.Collections.Generic.List(Of String)&#xA;' Outputs (Data Manager):&#xA;'   out_MatchType      As Int32   ' 1 = exact, 2 = contains, 0 = none&#xA;'   out_AppropriatePolicyNumber      As String&#xA;&#xA;'This code finds the best matching policy from a list of policies based on a given policy number. &#xA;'It normalizes the input strings by removing non-alphanumeric characters and converting to uppercase, then applies matching rules to determine the best match. &#xA;'The matching rules prioritize exact matches, followed by &quot;contains&quot; matches with certain length constraints to avoid overly broad matches. &#xA;'The outputs indicate whether a match was found, the type of match, the best matching policy, and its index in the list.&#xA;&#xA;Dim Normalize As System.Func(Of String, String) =&#xA;    Function(s As String) As String&#xA;        If String.IsNullOrWhiteSpace(s) Then Return String.Empty&#xA;        Dim alnum As String = System.Text.RegularExpressions.Regex.Replace(s, &quot;[^A-Za-z0-9]&quot;, &quot;&quot;)&#xA;        Return alnum.ToUpperInvariant()&#xA;    End Function&#xA;&#xA;Dim GetMatchType As System.Func(Of String, String, Integer) =&#xA;    Function(policy As String, policies As String) As Integer&#xA;        Dim pnA As String = Normalize(policy)&#xA;        Dim plA As String = Normalize(policies)&#xA;&#xA;        If pnA.Length = 0 OrElse plA.Length = 0 Then Return 0&#xA;&#xA;        ' Exact match:&#xA;        If String.Equals(pnA, plA, StringComparison.Ordinal) Then&#xA;            Return 1&#xA;        End If&#xA;&#xA;        ' Contains match rule:&#xA;        ' - claim length &gt; 5&#xA;        ' - either contains the other&#xA;        ' - abs(length diff) &lt; 6&#xA;        ' This is to allow for small variations/typos in the policy number while avoiding too broad matches (e.g. &quot;123&quot; matching &quot;12345678901234567890&quot;)&#xA;        If pnA.Length &gt; 5 Then&#xA;            Dim containsEither As Boolean = plA.Contains(pnA) OrElse pnA.Contains(plA)&#xA;            Dim lenClose As Boolean = Math.Abs(pnA.Length - plA.Length) &lt; 6&#xA;            If containsEither AndAlso lenClose Then&#xA;                Return 2&#xA;            End If&#xA;        End If&#xA;&#xA;        Return 0&#xA;    End Function&#xA;&#xA;'---- Find best match ----&#xA;Dim policyAlpha As String = Normalize(in_PolicyNumber)&#xA;&#xA;Dim bestMatch As String = Nothing&#xA;Dim bestIndex As Int32 = -1&#xA;Dim bestType As Int32 = 0&#xA;Dim bestLenDiff As Int32 = Integer.MaxValue&#xA;&#xA;If policyList IsNot Nothing Then&#xA;    For i As Integer = 0 To policyList.Count - 1&#xA;        Dim policies As String = policyList(i)&#xA;        Dim candAlpha As String = Normalize(policies)&#xA;        Dim mType As Integer = GetMatchType(in_PolicyNumber, policies)&#xA;&#xA;        If mType &gt; 0 Then&#xA;            Dim diff As Integer = Math.Abs(policyAlpha.Length - candAlpha.Length)&#xA;&#xA;            ' Determine if this match is better than the best match found so far based on the match type and length difference.&#xA;            Dim isBetter As Boolean =&#xA;                (bestIndex = -1) OrElse&#xA;                (mType &lt; bestType) OrElse&#xA;                (mType = bestType AndAlso diff &lt; bestLenDiff)&#xA;&#xA;            If isBetter Then&#xA;                bestType = mType&#xA;                bestLenDiff = diff&#xA;                bestMatch = policies&#xA;                bestIndex = i&#xA;            End If&#xA;        End If&#xA;    Next&#xA;End If&#xA;&#xA;' ---- Set outputs ----&#xA;out_MatchType = bestType&#xA;out_AppropriatePolicyNumber = If(bestMatch Is Nothing, String.Empty, bestMatch)" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="484.8,200.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PolicyNumber">[in_PolicyNumber]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="policyList">[policyList]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_AppropriatePolicyNumber">[out_AppropriatePolicyNumber]</OutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="out_MatchType">[out_MatchType]</OutArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484.8,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Best Match: &quot; + out_AppropriatePolicyNumber + Environment.NewLine + &quot;Match Type: &quot; + out_MatchType.ToString]" />
+          <If Condition="[out_MatchType = 0]" sap:VirtualizedContainerService.HintSize="484.8,1660" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="483.2,1432" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="Send Unidentified BRE Email" sap:VirtualizedContainerService.HintSize="449.6,1250.4" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="str_BRE_Recipients" />
+                    <Variable x:TypeArguments="x:String" Name="str_BRE_SenderEmail" />
+                    <Variable x:TypeArguments="ss:SecureString" Name="str_BRE_SenderPassword" />
+                    <Variable x:TypeArguments="x:String" Name="str_BRE_EmailBody" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="SupportEmailExceptionRecipients" CacheStrategy="None" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="416,184" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+                    <ui:GetRobotAsset.Value>
+                      <OutArgument x:TypeArguments="x:String">[str_BRE_Recipients]</OutArgument>
+                    </ui:GetRobotAsset.Value>
+                  </ui:GetRobotAsset>
+                  <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="SendSMTPEmail" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="416,184" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_BRE_SenderPassword]" Username="[str_BRE_SenderEmail]" />
+                  <Assign DisplayName="Assign - Build HTML Email Body" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[str_BRE_EmailBody]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;&lt;meta charset=""utf-8""&gt;&lt;html lang=""en""&gt;&lt;head&gt;&lt;style&gt;body{font-family:Arial,sans-serif;color:#333;line-height:1.5;}.title{color:#00529b;font-size:20px;font-weight:bold;}.section-title{font-weight:bold;margin-top:20px;color:#00529b;}.footer{margin-top:30px;font-size:12px;color:#666;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;" +
+"&lt;p class=""title""&gt;Business Exception Notification&lt;/p&gt;" +
+"&lt;p class=""section-title""&gt;Summary&lt;/p&gt;" +
+"&lt;p&gt;The Policy Checking Bot encountered a business exception that could not be identified in the known exceptions catalog. Manual review is required.&lt;/p&gt;" +
+"&lt;p class=""section-title""&gt;Transaction Details&lt;/p&gt;" +
+"&lt;p&gt;&lt;strong&gt;Automation:&lt;/strong&gt; Policy Checking Bot Performer&lt;br&gt;" +
+"&lt;strong&gt;Policy Number:&lt;/strong&gt; " + If(String.IsNullOrEmpty(in_policyNumber), "N/A", in_policyNumber) + "&lt;br&gt;" +
+"&lt;strong&gt;Timestamp:&lt;/strong&gt; " + DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt") + " EST&lt;br&gt;" +
+"&lt;strong&gt;Robot:&lt;/strong&gt; " + Environment.UserName + "&lt;br&gt;" +
+"&lt;strong&gt;Machine:&lt;/strong&gt; " + Environment.MachineName + "&lt;br&gt;" +
+"&lt;strong&gt;Error Message:&lt;/strong&gt; Policy Number not found in Sagitta. &lt;/p&gt;" +
+"&lt;p class=""section-title""&gt;Reason&lt;/p&gt;" +
+"&lt;p&gt;The exception thrown does not match any known business rule defined in the process. No automated action was taken.&lt;/p&gt;" +
+"&lt;p class=""section-title""&gt;Action Needed&lt;/p&gt;" +
+"&lt;p&gt;Please review the failed transaction in UiPath Orchestrator and determine the appropriate next step.&lt;/p&gt;" +
+"&lt;p&gt;Thank you,&lt;br&gt;&lt;strong&gt;UiPath Support Team&lt;/strong&gt;&lt;/p&gt;" +
+"&lt;div class=""footer""&gt;&lt;i&gt;Confidentiality Notice: The information contained in this email message, including any attachments, is for the sole use of the intended recipient(s) and may contain confidential and privileged information. Any unauthorized review, use, disclosure or distribution is prohibited. If you are not the intended recipient and have received this communication in error, please contact the sender by reply email and destroy all copies of the original message. Thank you.&lt;/i&gt;&lt;/div&gt;" +
+"&lt;/body&gt;&lt;/html&gt;"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[str_BRE_EmailBody]" ConnectionMode="LegacyConfiguration" DisplayName="Send SMTP Mail Message - Unidentified BRE" Email="[str_BRE_SenderEmail]" EnableSSL="True" From="[str_BRE_SenderEmail]" sap:VirtualizedContainerService.HintSize="416,434.4" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="True" Name="[str_BRE_SenderEmail]" Port="587" SecureConnection="Auto" SecurePassword="[str_BRE_SenderPassword]" Server="usismtp.usii.com" Subject="[&quot;BUSINESS EXCEPTION – Policy Checking Bot Performer – Policy: &quot; + If(String.IsNullOrEmpty(in_policyNumber), &quot;N/A&quot;, in_policyNumber)]" To="[str_BRE_Recipients]" UseISConnection="False" UseRichTextEditor="True">
+                    <ui:SendMail.AttachmentsBackup>
+                      <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:Dictionary x:TypeArguments="umame:AttachmentInputMode, scg:List(x:Object)" />
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ui:SendMail.AttachmentsBackup>
+                    <ui:SendMail.ConnectionDetailsBackupSlot>
+                      <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="LegacyConfiguration">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ui:SendMail.ConnectionDetailsBackupSlot>
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                    </ui:SendMail.Files>
+                  </ui:SendMail>
+                  <ui:LogMessage DisplayName="Log Message - Unidentified BRE Email Sent" sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Unidentified Business Exception email sent to: &quot; + str_BRE_Recipients + &quot; | Policy: &quot; + If(String.IsNullOrEmpty(in_policyNumber), &quot;N/A&quot;, in_policyNumber)]" />
+                </Sequence>
+                <Throw Exception="[New BusinessRuleException(&quot;Policy Number not found in Sagitta.&quot;)]" sap:VirtualizedContainerService.HintSize="449.6,117.6" sap2010:WorkflowViewState.IdRef="Throw_6" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="483.2,94.4" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="571.2,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="518.4,181.6" sap2010:WorkflowViewState.IdRef="Sequence_47">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Throw Exception="[new SystemException(exception.Message)]" sap:VirtualizedContainerService.HintSize="484.8,117.6" sap2010:WorkflowViewState.IdRef="Throw_5" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="571.2,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+            </ActivityAction.Argument>
+            <Rethrow sap:VirtualizedContainerService.HintSize="518.4,24.8" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="518.4,94.4" sap2010:WorkflowViewState.IdRef="Sequence_44">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </TryCatch.Finally>
+    </TryCatch>
+  </Sequence>
+</Activity>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="tlXdXELns0mcdDfeAgTPnw" Reference="zDuFnmFUUUuYfQVSyWIsXQ/8HaJvUb6GES7JnEdhFLCBQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="0, 0, 960, 720" ContentHash="TwLdZ-Qa3kK8cDD1QqcjuQ" FilePath="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" IconBase64="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" Reference="zDuFnmFUUUuYfQVSyWIsXQ/8HaJvUb6GES7JnEdhFLCBQ" Selector="&lt;wnd app='msedge.exe' cls='#32770' title='Open' /&gt;" Version="V2">
+      <TargetApp.Arguments>
+        <p:InArgument x:TypeArguments="x:String" />
+      </TargetApp.Arguments>
+      <TargetApp.Url>
+        <p:InArgument x:TypeArguments="x:String" />
+      </TargetApp.Url>
+      <TargetApp.WorkingDirectory>
+        <p:InArgument x:TypeArguments="x:String" />
+      </TargetApp.WorkingDirectory>
+      <imageRef attrName="InformativeScreenshot" originalValue="0c2fd4b45211ccdaff592f61cc9e7e82.png" xmlns="">0BBX2303asUWrMDAXCqtawQ</imageRef>
+    </TargetApp>
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

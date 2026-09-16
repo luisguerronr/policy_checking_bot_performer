@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="S5F8gb-UhEqqsT5xnYhOmg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" CVScreenId="c618cf7f-2c45-46a1-b853-9e94b99b4c4a" DesignTimeRectangle="1657, 77, 48, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='U Compare - Microsoft Edge' role='pane' /&gt;&lt;ctrl name='App bar' role='tool bar' /&gt;&lt;ctrl name='Downloads, file requires attention' role='push button' /&gt;" Guid="e8ef5791-bf8c-44c6-a743-114f2843abf5" ScopeSelectorArgument="&lt;wnd app='msedge.exe' title='U Compare - Work - Microsoft​ Edge' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="d7caf9e4c2fd8fcadb9ddb046a2f4109.jpg" xmlns="">0xVz2ITP3102HFoBv4MroUg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">None</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
