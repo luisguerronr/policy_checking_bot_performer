@@ -36,14 +36,14 @@ Studio 25.10.1.0, VB expression language.
 | `GetDataFromSagittaDBAndValidateAllScenarios.xaml` | Sagitta lookup + validation hub; invokes the task create/route/update workflows, `eligibilityCheckForCoverageCodeFromPolicyDoc.xaml`, `SetAttributeTasks.xaml`, `log exceptions and Raise exception.xaml` |
 | `Check Business Exclusions/` | 14 workflows covering the PDD 4.1.1.6 exclusion table (coverage code, department code, drawer, region, division, producer 1, servicer code, CNR, effective/expiration dates, exclusion list, Sagitta data, task setup, task attribute update) |
 | `CL - Binding Tasks/` | CL Binding task handling and closeout (PDD 4.1.1.11) |
-| `Secondary Review Documents/` | Carrier binder/quote/proposal, USI proposal, prior policy retrieval, merge/convert, validation, temp cleanup (PDD 4.1.2.2) |
+| `Secondary Review Documents/` | `Get Secondary Documents.xaml` orchestrates `Get Supporting Document Pages.xaml` (generic, four document types), `Get USI Proposals.xaml`, `Merge Pages*.xaml`, `Secondary Review Documents Validation.xaml`, `Cleanup Temp Folder.xaml` (PDD 4.1.2.2) |
 | `UCompare Module.xaml`, `UCompare Checklist/` | UCompare comparison generation and checklist upload to ImageRight (PDD 4.1.2.3–4.1.2.11) |
 | `Create Or Route Or Update Tasks in Imageright For Filed Policy Scenario.xaml`, `... For Mail Indexing Scenario.xaml` | PC2.0 task find/route/create (PDD 4.1.1.5, 4.1.1.9, 5.1.1–5.1.3) |
 | `Move New Mail Folder to Policy Folder in ImageRight.xaml` | PDD 4.1.1.10 |
 | `SetAttributeTasks.xaml` | ImageRight task attribute updates (PDD 4.2.x, 4.1.2.12) |
 | `QuerySecondReviewDocuments.xaml`, `GetSupportingDocumentsFromDB.xaml`, `GetPoliciesRelatedToTasks.xaml` | Supporting data queries |
 | `Check_Client_Lock.xaml`, `Skip_Current_Transaction.xaml` | Locking / transaction skip helpers |
-| `Tests/` | REFramework test cases (`Tests.xlsx` data) |
+| `Tests/` | REFramework test cases (`Tests.xlsx` data); `Tests/Validation/validate_workflow_references.py` static reference and argument-contract checker |
 | `Data/Input`, `Data/Output`, `Data/Temp` | Runtime folders, placeholder-only in source control |
 
 Dependencies (`project.json`): `ImageRightAPILibrary` 1.0.27, `Sagitta.Json.Extract.Library` 1.0.24,
@@ -207,6 +207,13 @@ not recorded here).
    without a new request.
 7. Several `Framework/Process.xaml` activity DisplayNames still name older file names ("… ImageRight 2",
    "Create Or Update Task …"); the `WorkflowFileName` attributes are correct. Cosmetic only.
+8. Pre-existing argument type mismatches in `Tests/`: `GetTransactionDataTestCase.xaml`,
+   `InitAllApplicationsTestCase.xaml`, `InitAllSettingsTestCase.xaml`, `ProcessTestCase.xaml` and
+   `WorkflowTestCaseTemplate.xaml` pass `Dictionary(String, Object)` where the framework workflows
+   declare `Dictionary(String, String)` (10 sites). `GetTransactionDataTestCase.xaml` and
+   `ProcessTestCase.xaml` also omit the declared inputs `in_IsFound` and `In_Reference`. Whether the
+   test cases are stale or the framework signature changed under them needs confirming before any
+   fix.
 
 ## 7. Validation status
 
@@ -252,12 +259,44 @@ anywhere in the project; the configuration workbook path comes from the `Perform
 Orchestrator asset; secrets are referenced by asset name only; `UCompare Module.xaml` navigates via
 `in_Config("Ucompare_URL")`.
 
-Backlog order: 1 documentation baseline (done) · 2 config key inventory · 3 ignore runtime output and
-untrack the committed screenshot · 4 correct copied names and stale captions · 5 exception-path
-analysis · 6 extract PDD steps from `UCompare Module.xaml` one per PR · 7 consolidate the five
-document retrieval workflows · 8 confirm and correct UI target descriptors · 9 normalise naming per
-folder · 10 resolve `Check Business Exclusions/` · 11 remove the disabled placeholder throw. Items 8
-and 10 are blocked pending a decision.
+### Extracted and consolidated workflows
+
+`Secondary Review Documents/Get Supporting Document Pages.xaml` (new, PR #4) — single responsibility:
+read the SQL file named by a configuration key, execute it against the ImageRight database with
+`ClientCode` and `PolicyId` parameters, return the page `DataTable`. Arguments: `in_Config`,
+`in_QueryFileConfigKey`, `in_DocumentTypeName`, `in_ClientCode`, `in_PolicyId`, `out_DocumentPages`.
+Replaces `Get Carrier Binder.xaml`, `Get Carrier Quotes.xaml`, `Get Carrier Proposals.xaml` and
+`Get Prior Policies.xaml`, which were byte-identical apart from log text, the SQL configuration key
+and the output argument name. All four were removed after their single caller,
+`Get Secondary Documents.xaml`, was redirected. `Get USI Proposals.xaml` stays standalone: its query
+takes client code, policy effective date and policy year rather than a policy ID (TD-006).
+
+Call-site mapping preserved exactly: carrier binder → `SecondaryDocsCarrierBinderQuery` /
+`CarrierBinderPages` / `in_PolicyId`; carrier quote → `SecondaryDocsCarrierQuoteQuery` /
+`CarrierQuotePages` / `in_PolicyId`; carrier proposal → `SecondaryDocsCarrierProposalQuery` /
+`CarrierProposalPages` / `in_PolicyId`; prior year policy → `SecondaryDocsPriorPolicyQuery` /
+`PriorPolicyPages` / `in_PriorPolicyId`.
+
+Behaviour note: the only observable difference is Orchestrator log wording. Row-count messages are
+unchanged; the "Querying for …" lines and the prior policy identifier label differ in wording. No
+branch depends on log text. Recorded in the PDD draft §7.1.
+
+### Validation tooling
+
+`Tests/Validation/validate_workflow_references.py` parses every workflow's `x:Members` and every
+`InvokeWorkflowFile` site, resolving XML namespace prefixes to URIs so type aliases compare
+correctly. It reports unresolved targets, argument keys a target does not declare, direction and
+type mismatches, and declared inputs a caller omits. It is the standing regression check while
+UiPath Studio is unavailable. Baseline on `main`: 10 errors, all pre-existing
+`Dictionary(String, Object)` versus `Dictionary(String, String)` mismatches in `Tests/` test cases,
+plus 6 warnings. These are recorded as a new open item rather than fixed here.
+
+Backlog order: 1 documentation baseline (done) · 7 consolidate the document retrieval workflows
+(done, PR #4) · 2 config key inventory · 3 ignore runtime output and untrack the committed
+screenshot · 4 correct stale invoke captions · 5 exception-path analysis · 6 extract PDD steps from
+`UCompare Module.xaml` one per PR · 8 confirm and correct UI target descriptors · 9 normalise naming
+per folder · 10 resolve `Check Business Exclusions/` · 11 remove the disabled placeholder throw.
+Items 8 and 10 are blocked pending a decision.
 
 Constraint: UiPath Studio and Robot are unavailable in the agent environment. Automated validation is
 limited to XML well-formedness, `InvokeWorkflowFile` reference integrity and project metadata
@@ -271,3 +310,11 @@ merge.
 - 2026-09-16: Phase 1 documentation baseline — added `Documentation/PDD-Policy-Checking-Draft.md` and
   `Documentation/Technical-Decisions.md`. Documentation only; no workflow, configuration or project
   metadata changed. (PR #2, merged as `c904d22`.)
+- 2026-09-16: Project memory updated with the Phase 1 assessment outcomes. (PR #3, merged as
+  `cf6f888`.)
+- 2026-09-16: First refactor — consolidated four document retrieval workflows into
+  `Get Supporting Document Pages.xaml`, redirected `Get Secondary Documents.xaml`, removed the four
+  obsolete files, and added the static workflow reference validator. Workflow count 67 → 64.
+  Validation: 0 malformed XAML, 98 invoke sites checked, no new reference or argument-contract
+  errors against the `main` baseline, project metadata and Object Repository untouched.
+  UiPath Studio validation still outstanding per TD-004. (PR #4.)

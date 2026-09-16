@@ -52,6 +52,16 @@ A finding is only acted on when it can be verified from the repository. Observat
 runtime behaviour (selector resolution, browser tab matching, database results) are recorded as
 observations and confirmed in Studio before any change is made.
 
+### TD-006 — Reusable components keep typed arguments
+
+A fully generic data-access component — one workflow executing any configured SQL file with an
+untyped parameter collection — was considered and rejected. UiPath would require a
+`Dictionary(Of String, Argument)` for the parameters, which removes compile-time type checking at
+exactly the point where a mistake is silent at design time and fails in production. Reusable
+components therefore keep explicit typed arguments, and workflows whose query contracts genuinely
+differ stay separate. This is why `Get USI Proposals.xaml` was not folded into
+`Get Supporting Document Pages.xaml`.
+
 ---
 
 ## 2. Assessment method
@@ -61,6 +71,10 @@ Performed against the merge commit of the memory baseline on `main`.
 - 67 `.xaml` workflows parsed; activity counts, argument counts, `TryCatch` and `Throw` counts, and
   `InvokeWorkflowFile` fan-out measured per file.
 - All `InvokeWorkflowFile` targets resolved against the filesystem.
+- `Tests/Validation/validate_workflow_references.py` checks every invoke site against its target's
+  declared `x:Members`: argument names, directions and namespace-resolved types, plus declared inputs
+  a caller omits. It is the standing regression check for reference and contract integrity in the
+  absence of UiPath Studio.
 - Full-text scan for hard-coded URLs, Windows and UNC paths, e-mail addresses and credential-like
   literals, excluding XML namespace declarations.
 - Configuration key usage collected across every workflow.
@@ -72,26 +86,25 @@ Performed against the merge commit of the memory baseline on `main`.
 
 Severity: **H** blocks correct or portable operation · **M** maintainability or risk · **L** cosmetic.
 
-### F-01 (M) — Five near-duplicate document retrieval workflows
+### F-01 (M) — Five near-duplicate document retrieval workflows — RESOLVED
 
 `Secondary Review Documents/Get Carrier Binder.xaml`, `Get Carrier Quotes.xaml`,
-`Get Carrier Proposals.xaml`, `Get Prior Policies.xaml` and `Get USI Proposals.xaml` share an
-identical shape: read a SQL file, run the query, return a page collection. Four take the same
-arguments (`in_Config`, `in_ClientCode`, `in_PolicyId`, plus one output); `Get USI Proposals.xaml`
-takes `in_PolicyEffectiveDate` and `in_PolicyYear` instead of `in_PolicyId`. They differ only in the
-configuration key naming the SQL file and in the output argument name.
+`Get Carrier Proposals.xaml` and `Get Prior Policies.xaml` were byte-identical apart from three
+things: the log message text, the configuration key naming the SQL file, and the output argument
+name. `Get USI Proposals.xaml` shared the same shape but a different query contract — three
+parameters including a `DateTime` — rather than the `ClientCode` plus `PolicyId` pair.
 
-Proposal: one reusable `Get Supporting Documents By Type` workflow taking the query configuration key
-and its parameters, returning the page collection. Retires roughly four workflows' worth of
-duplication. Touches `Secondary Review Documents/Get Secondary Documents.xaml` wiring, so it requires
-Studio validation per TD-004.
+Resolved by consolidating the four identical workflows into
+`Secondary Review Documents/Get Supporting Document Pages.xaml`, which takes the query configuration
+key and a document type name as arguments. `Get USI Proposals.xaml` is deliberately left standalone;
+folding a different parameter contract into the same workflow would have required an untyped
+parameter collection (see TD-006).
 
-### F-02 (L) — Root activity names copied between workflows
+### F-02 (L) — Root activity names copied between workflows — RESOLVED
 
-`Get Carrier Quotes.xaml` has root `DisplayName` `Get_Carrier_Binder`, and
-`Get Carrier Proposals.xaml` has root `DisplayName` `Get_Prior_Policies`. Copy-paste residue; the
-names contradict the file names and mislead in Studio and in logs. Resolved naturally by F-01, or
-correctable independently.
+`Get Carrier Quotes.xaml` carried root `DisplayName` `Get_Carrier_Binder` and
+`Get Carrier Proposals.xaml` carried `Get_Prior_Policies`. Both files were retired by F-01, and the
+consolidated workflow uses the single accurate name `Get Supporting Document Pages`.
 
 ### F-03 (M) — Oversized workflows
 
@@ -199,10 +212,10 @@ behind Studio validation.
 | 1 | Documentation baseline — PDD draft and this record | — | No | Not required |
 | 2 | Configuration key inventory | F-11 | No | Not required |
 | 3 | Ignore runtime output; untrack the committed exception screenshot | F-06 | No | Not required |
-| 4 | Correct copied root activity names and stale invoke captions | F-02, F-09 | No | Required |
+| 4 | Correct stale invoke captions in `Framework/Process.xaml` | F-09 | No | Required |
 | 5 | Analysis: exception handling paths at each throw site | F-08 | No | Not required |
 | 6 | Extract one PDD step at a time from `UCompare Module.xaml` | F-03 | No | Required |
-| 7 | Consolidate the five document retrieval workflows | F-01, F-02 | No | Required |
+| 7 | ~~Consolidate the document retrieval workflows~~ — done, PR #4 | F-01, F-02 | No | Required |
 | 8 | Confirm and correct per-environment UI target descriptors | F-05 | Possible | Required |
 | 9 | Normalise workflow naming per folder | F-10 | No | Required |
 | 10 | Resolve `Check Business Exclusions/` — complete or remove | F-04 | Possible | Required |
@@ -216,3 +229,4 @@ open item 2 in the PDD draft.
 | Version | Date | Change |
 | --- | --- | --- |
 | 0.1 | 2026-09-16 | Initial technical decisions and Phase 1 refactor backlog. |
+| 0.2 | 2026-09-16 | F-01 and F-02 resolved by consolidating four document retrieval workflows; TD-006 added; validator added under `Tests/Validation/`. |

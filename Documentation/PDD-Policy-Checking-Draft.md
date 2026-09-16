@@ -313,7 +313,7 @@ Current mapping of PDD requirements to workflows. `IMPL`
 | §4.1.1.5 / §4.1.1.9 PC2.0 task create, route, update | `Create Or Route Or Update Tasks in Imageright For Filed Policy Scenario.xaml`, `... For Mail Indexing Scenario.xaml` |
 | §4.1.1.10 move New Mail items | `Move New Mail Folder to Policy Folder in ImageRight.xaml` |
 | §4.1.1.11 close CL Binding task | `CL - Binding Tasks/` |
-| §4.1.2.2 second review documents | `Secondary Review Documents/`, `QuerySecondReviewDocuments.xaml`, `GetSupportingDocumentsFromDB.xaml` |
+| §4.1.2.2 second review documents | `Secondary Review Documents/Get Secondary Documents.xaml` orchestrates `Get Supporting Document Pages.xaml` (carrier binder, carrier quote, carrier proposal, prior year policy), `Get USI Proposals.xaml` and `Merge Pages.xaml`, then `Secondary Review Documents Validation.xaml`; also `QuerySecondReviewDocuments.xaml`, `GetSupportingDocumentsFromDB.xaml` |
 | §4.1.2.3–4.1.2.9 UCompare comparison | `UCompare Module.xaml` |
 | §4.1.2.10–11 checklist upload | `UCompare Checklist/` |
 | §4.2 / §4.1.2.12 task attribute updates | `SetAttributeTasks.xaml` |
@@ -321,6 +321,18 @@ Current mapping of PDD requirements to workflows. `IMPL`
 | §4.3 reassigned task loading | Not present in this repository — see §8 |
 
 ---
+
+## 7.1 Current implementation behaviour not described in the live PDD
+
+Recorded as observed, without inferred business intent.
+
+| Behaviour | Where | Status |
+| --- | --- | --- |
+| Each second review document type is retrieved by a parameterised SQL file named by a configuration key, executed against the ImageRight database, returning page rows that are then merged into a single file per type. | `Secondary Review Documents/Get Supporting Document Pages.xaml`, `Get USI Proposals.xaml`, `Merge Pages.xaml` | Current implementation behaviour |
+| The prior year policy query is driven by the prior term policy ID, while the other three carrier document queries use the current policy ID. This is consistent with `PDD §4.1.2.2`. | `Get Secondary Documents.xaml` | Current implementation behaviour |
+| `Get USI Proposals.xaml` queries on client code, policy effective date and policy year rather than policy ID. The live PDD does not state the USI Proposal lookup keys. | `Get USI Proposals.xaml` | `TBD` |
+| `Get Secondary Documents.xaml` carries a `Testing` boolean variable defaulting to `False` which, when true, loads configuration and a transaction from `Tests\Get Config and Transaction.xaml`. | `Get Secondary Documents.xaml` | Current implementation behaviour |
+| Orchestrator log wording for the four consolidated document queries was normalised when the workflows were merged. Row-count messages are unchanged; the "Querying for …" lines and the prior policy identifier label differ in wording only. No branch depends on log text. | `Get Supporting Document Pages.xaml` | Current implementation behaviour |
 
 ## 8. Open items
 
@@ -340,3 +352,4 @@ Current mapping of PDD requirements to workflows. `IMPL`
 | Version | Date | Change |
 | --- | --- | --- |
 | 0.1 | 2026-09-16 | Initial draft from the live PDD and a read-only survey of the implementation. |
+| 0.2 | 2026-09-16 | Implementation map updated for the consolidated document retrieval workflow; §7.1 added for current implementation behaviour outside the live PDD. |
