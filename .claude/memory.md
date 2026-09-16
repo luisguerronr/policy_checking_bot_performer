@@ -183,10 +183,12 @@ not recorded here).
 
 ## 6. Open questions and unresolved issues
 
-1. `Check Business Exclusions/` is not invoked from any workflow in the project — no reference to it
-   exists outside its own folder. Validation currently runs through
-   `GetDataFromSagittaDBAndValidateAllScenarios.xaml`. Needs confirmation whether the folder is
-   work in progress intended to replace that hub, or superseded and removable.
+1. `Check Business Exclusions/` is scaffolded but unimplemented and unwired: 13 of its 14 workflows
+   contain 2 activities and 0 arguments (empty stubs); `Check Business Exclusions - Main.xaml`
+   orchestrates them with 11 invokes and one `in_Transaction` argument. Nothing in the project
+   references the folder. Validation currently runs through
+   `GetDataFromSagittaDBAndValidateAllScenarios.xaml`. This is unfinished work, not dead code.
+   Direction required before completing or removing it (backlog item 10).
 2. The PDD's own cross-references are inconsistent: §4.1.1.4 points to "4.2.5" for ineligible coverage
    while the body numbers that scenario 4.2.6; §4.1.1.6 points to "4.2.9 Policy in Marketing Status"
    (body 4.2.8) and "4.2.12 Inactive Policy" (body 4.2.10); §4.1.1.9 refers to "4.1.1.4" for the task
@@ -194,9 +196,11 @@ not recorded here).
 3. PDD §4.1.1.7 and §4.1.1.8 are flagged open in the document itself: it is undecided how MDS resolves
    policy ID from policy number, whether a null policy ID can be sent, and whether MDS already validates
    the policy year against Sagitta effective/expiration dates.
-4. The Coverage Code Eligibility Table, the LOC mapping file and the Carrier Service Center servicer-code
-   list are referenced by the PDD but not included in it (PDD §1.6 points to external mapping files).
-   Their current location and version need confirming before any eligibility logic is changed.
+4. The Coverage Code Eligibility Table, the LOC mapping file and the Carrier Service Center
+   servicer-code list resolve at runtime from the configured shared folder and are not in source
+   control. 15 external files are referenced by literal name across the workflows (6 `.xlsx`
+   reference workbooks, 9 `.sql` query files); see the PDD draft §3.3 for the full list. Their
+   authoritative location, ownership and change control remain unconfirmed.
 5. SLA is TBD (PDD §1.9).
 6. §5.3 enhancements (reroute rogue PC2.0 tasks; route downloaded policies to Second Review/Servicer 1
    via the BEU transaction code) are explicitly deferred to post-MVP and are not to be implemented
@@ -206,12 +210,64 @@ not recorded here).
 
 ## 7. Validation status
 
-- 2026-09-16: all 44 `.xaml` files in the project parse as well-formed XML; every `InvokeWorkflowFile`
-  target resolves to an existing file. No functional changes made in this session.
+- 2026-09-16 (baseline): all 67 `.xaml` files in the project parse as well-formed XML; every
+  `InvokeWorkflowFile` target resolves to an existing file; `project.json`, `entry-points.json` and
+  `Main.xaml.json` parse as JSON and `DocumentProcessing/taxonomy.json` parses as UTF-8-BOM (UiPath
+  default encoding); entry point `Main.xaml` present; 15 pinned dependencies and `projectVersion`
+  1.0.46 unchanged. (The earlier count of 44 omitted `Tests/` and the Object Repository scan scope.)
+- 2026-09-16 (PR #2): documentation-only change; the above checks re-run clean and `git diff` against
+  `main` for `*.xaml`, `*.json` and `.gitignore` was empty. Secret, contact and environment-URL scan
+  over both new documents: clean.
 - UiPath Studio / Robot is not available in this environment, so workflow execution and selector
   validation cannot be performed here; changes must be validated in Studio before release.
 
-## 8. Change log
+## 8. Phase 1 refactor programme
+
+Governance documents, both merged to `main`:
+
+- `Documentation/PDD-Policy-Checking-Draft.md` — version-controlled PDD draft v0.1. Verified content
+  only; every requirement traced as `PDD §x.y`, `IMPL` or `TBD`. Carries 8 open items.
+- `Documentation/Technical-Decisions.md` — decisions TD-001 to TD-005, assessment method, 11 findings
+  with evidence, and the prioritised backlog.
+
+Decisions of record: the live PDF stays authoritative and the Markdown draft never adds requirements
+(TD-001); the existing functional folder structure is retained rather than introducing a parallel
+`Workflows/` tree, because renaming would break every `InvokeWorkflowFile` path and Object Repository
+binding for no functional gain (TD-002); configuration and secrets stay outside source control
+(TD-003); no logic-editing refactor merges without UiPath Studio validation (TD-004); verified
+defects are kept separate from runtime-dependent observations (TD-005).
+
+Assessment findings, by severity: F-01 five near-duplicate document retrieval workflows (M); F-02
+copied root activity names (L); F-03 oversized workflows, `UCompare Module.xaml` 154 activities and
+`GetDataFromSagittaDBAndValidateAllScenarios.xaml` 139 activities / 23 invokes (M); F-04
+`Check Business Exclusions/` scaffolded and unwired (M); F-05 per-environment `BrowserURL` values and
+an embedded client GUID in UI target descriptors (M, observation pending Studio confirmation); F-06
+runtime exception screenshot committed to source control (M); F-07 disabled placeholder throw in
+`GetMatchingPolicyNumber/Sagittalogin.xaml` (L); F-08 uneven exception coverage outside the framework
+(M); F-09 stale invoke captions in `Framework/Process.xaml` (L); F-10 four coexisting naming
+conventions (L); F-11 44 config keys with no versioned inventory (M).
+
+Verified as sound and to be preserved: no hard-coded file paths, e-mail addresses or credentials
+anywhere in the project; the configuration workbook path comes from the `PerformerConfigFile`
+Orchestrator asset; secrets are referenced by asset name only; `UCompare Module.xaml` navigates via
+`in_Config("Ucompare_URL")`.
+
+Backlog order: 1 documentation baseline (done) · 2 config key inventory · 3 ignore runtime output and
+untrack the committed screenshot · 4 correct copied names and stale captions · 5 exception-path
+analysis · 6 extract PDD steps from `UCompare Module.xaml` one per PR · 7 consolidate the five
+document retrieval workflows · 8 confirm and correct UI target descriptors · 9 normalise naming per
+folder · 10 resolve `Check Business Exclusions/` · 11 remove the disabled placeholder throw. Items 8
+and 10 are blocked pending a decision.
+
+Constraint: UiPath Studio and Robot are unavailable in the agent environment. Automated validation is
+limited to XML well-formedness, `InvokeWorkflowFile` reference integrity and project metadata
+integrity; `Tests/` cannot be executed here. Items 4 and 6 through 11 require Studio validation before
+merge.
+
+## 9. Change log
 
 - 2026-09-16: Created this memory file from the PDD and a full read-only survey of the repository.
-  No workflow or configuration changes.
+  No workflow or configuration changes. (PR #1, merged as `357a278`.)
+- 2026-09-16: Phase 1 documentation baseline — added `Documentation/PDD-Policy-Checking-Draft.md` and
+  `Documentation/Technical-Decisions.md`. Documentation only; no workflow, configuration or project
+  metadata changed. (PR #2, merged as `c904d22`.)
