@@ -181,12 +181,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Carrier Binder - Invoke Workflow File (Secondary Review Documents\Get Carrier Binder.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Carrier Binder.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Supporting Document Pages - Carrier Binder - Invoke Workflow File (Secondary Review Documents\Get Supporting Document Pages.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Supporting Document Pages.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_QueryFileConfigKey">SecondaryDocsCarrierBinderQuery</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DocumentTypeName">carrier binder</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ClientCode">[in_TransactionItem.SpecificContent("clientcode").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PolicyId">[in_PolicyId]</InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_CarrierBinderPages">[CarrierBinderPages]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DocumentPages">[CarrierBinderPages]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Merge Pages - Invoke Workflow File (Secondary Review Documents\Merge Pages.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Secondary Review Documents\Merge Pages.xaml">
@@ -198,12 +200,14 @@
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Carrier Quotes - Invoke Workflow File (Secondary Review Documents\Get Carrier Quotes.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Carrier Quotes.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Supporting Document Pages - Carrier Quote - Invoke Workflow File (Secondary Review Documents\Get Supporting Document Pages.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Supporting Document Pages.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_QueryFileConfigKey">SecondaryDocsCarrierQuoteQuery</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DocumentTypeName">carrier quote</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ClientCode">[in_TransactionItem.SpecificContent("clientcode").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PolicyId">[in_PolicyId]</InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_CarrierQuotePages">[CarrierQuotePages]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DocumentPages">[CarrierQuotePages]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Merge Pages - Invoke Workflow File (Secondary Review Documents\Merge Pages.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Secondary Review Documents\Merge Pages.xaml">
@@ -215,12 +219,14 @@
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Carrier Proposals - Invoke Workflow File (Secondary Review Documents\Get Carrier Proposals.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Carrier Proposals.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Supporting Document Pages - Carrier Proposal - Invoke Workflow File (Secondary Review Documents\Get Supporting Document Pages.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Supporting Document Pages.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_CarrierProposalPages">[CarrierProposalPages]</OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_QueryFileConfigKey">SecondaryDocsCarrierProposalQuery</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DocumentTypeName">carrier proposal</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ClientCode">[in_TransactionItem.SpecificContent("clientcode").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PolicyId">[in_PolicyId]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DocumentPages">[CarrierProposalPages]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Merge Pages - Invoke Workflow File (Secondary Review Documents\Merge Pages.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Secondary Review Documents\Merge Pages.xaml">
@@ -232,12 +238,14 @@
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Prior Policies - Invoke Workflow File (Secondary Review Documents\Get Prior Policies.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Prior Policies.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Supporting Document Pages - Prior Year Policy - Invoke Workflow File (Secondary Review Documents\Get Supporting Document Pages.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Supporting Document Pages.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_PolicyPages">[PriorPolicyPages]</OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_QueryFileConfigKey">SecondaryDocsPriorPolicyQuery</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DocumentTypeName">prior year policy</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ClientCode">[in_TransactionItem.SpecificContent("clientcode").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PolicyId">[in_PriorPolicyId]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DocumentPages">[PriorPolicyPages]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Merge Pages - Invoke Workflow File (Secondary Review Documents\Merge Pages.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Secondary Review Documents\Merge Pages.xaml">
