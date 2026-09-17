@@ -150,8 +150,6 @@
       <Variable x:TypeArguments="x:String" Name="strPolicyChecklistFileId" />
       <Variable x:TypeArguments="x:String" Name="strAuthorization" />
       <Variable x:TypeArguments="x:String" Name="strSecurityToken" />
-      <Variable x:TypeArguments="x:String" Name="strUsername" />
-      <Variable x:TypeArguments="ss:SecureString" Name="securePassword" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -179,21 +177,11 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="IRLoginCredentials" CacheStrategy="None" DisplayName="Get ImageRight API Credential" sap:VirtualizedContainerService.HintSize="382,86" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[securePassword]" Username="[strUsername]">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:GetRobotCredential>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Find Policy Year Folder Id - Invoke Workflow File (ImageRight\Folders\Find Policy Year Folder Id.xaml)" sap:VirtualizedContainerService.HintSize="382,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ImageRight\Folders\Find Policy Year Folder Id.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_ClientCode">[in_TransactionItem.SpecificContent("clientcode").ToString]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_FolderTypeID">[in_Config("ImageRightPolicyTermFolderTypeId")]</InArgument>
               <OutArgument x:TypeArguments="x:String" x:Key="out_Authorization">[strAuthorization]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Username">[strUsername]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Password">[New System.Net.NetworkCredential("", securePassword).Password]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_Year">[CDate(in_TransactionItem.SpecificContent("EffectiveDate")).ToString("yyyy")]</InArgument>
               <OutArgument x:TypeArguments="x:String" x:Key="out_SecurityToken">[strSecurityToken]</OutArgument>
               <InArgument x:TypeArguments="x:Int32" x:Key="in_FolderDescriptionPropertyIndex">[CInt(in_Config("ImageRightFolderDescriptionIndex"))]</InArgument>

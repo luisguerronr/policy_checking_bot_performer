@@ -39,6 +39,7 @@
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <scg:List x:TypeArguments="AssemblyReference" Capacity="88">
+      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
@@ -67,6 +68,7 @@
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
@@ -78,6 +80,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Testing</AssemblyReference>
@@ -131,14 +134,14 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadRange AddHeaders="True" DataTable="[dt_ResultsData]" DisplayName="Read Resulted Data" sap:VirtualizedContainerService.HintSize="533.3333333333334,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Tests" WorkbookPath="[StatusFileName]">
+      <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_ResultsData]" DisplayName="Read Resulted Data" sap:VirtualizedContainerService.HintSize="533.3333333333334,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Tests" WorkbookPath="[StatusFileName]">
         <ui:ReadRange.Range>
           <InArgument x:TypeArguments="x:String">
             <Literal x:TypeArguments="x:String" Value="" />
           </InArgument>
         </ui:ReadRange.Range>
       </ui:ReadRange>
-      <ui:ReadRange AddHeaders="True" DataTable="[dt_ExpectedData]" DisplayName="Read Expected Data" sap:VirtualizedContainerService.HintSize="533.6,97.6" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Result" WorkbookPath="[ExpectedDataFileName]">
+      <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_ExpectedData]" DisplayName="Read Expected Data" sap:VirtualizedContainerService.HintSize="533.6,97.6" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Result" WorkbookPath="[ExpectedDataFileName]">
         <ui:ReadRange.Range>
           <InArgument x:TypeArguments="x:String">
             <Literal x:TypeArguments="x:String" Value="" />
