@@ -20,15 +20,30 @@ produced them. No business behaviour is changed on the basis of this document al
 version-controlled, reviewable in pull requests and traceable to the implementation, but it never
 adds requirements. Anything not stated in the live PDD or verified in code is marked `TBD`.
 
-### TD-002 — The existing functional folder structure is retained
+### TD-002 — Folders are named for the system or process area they address (revised)
 
-The repository already separates `Framework/` (REFramework orchestration) from functional folders
-(`Secondary Review Documents/`, `UCompare Checklist/`, `GetMatchingPolicyNumber/`,
-`CL - Binding Tasks/`, `Check Business Exclusions/`), plus `Data/`, `Tests/` and `Documentation/`.
-This satisfies the modular structure objective. Introducing a parallel `Workflows/` tree would move
-every file, break `InvokeWorkflowFile` references and Object Repository bindings, and produce an
-unreviewable diff for no functional gain. Root-level workflows are migrated into functional folders
-incrementally, one reviewable pull request at a time.
+*Superseded the original decision to retain the existing folder layout.* That layout mixed naming
+conventions, named folders after implementation details, and left sixteen workflows at the project
+root. Reference integrity — the reason the original decision was cautious — is now covered by
+`Tests/Validation/validate_workflow_references.py`, which makes a bulk move verifiable, so the
+structure follows the systems and process areas the PDD describes:
+
+| Folder | Contents |
+| --- | --- |
+| `Business Rules/` | `PDD §4.1.1.4` and `§4.1.1.6` decisions. No UI, database or file access. |
+| `Sagitta/` | Sagitta and Snowflake integration: login, client page, policy number matching, policy data retrieval. |
+| `ImageRight/Tasks/` | Task create, route, update, attribute setting and closure. |
+| `ImageRight/Documents/` | Document queries and uploads. |
+| `ImageRight/Folders/` | Folder lookup and moves. |
+| `UCompare/` | UCompare comparison generation. |
+| `Second Review Documents/` | `PDD §4.1.2.2` document gathering, using the PDD's own terminology. |
+| `Shared/` | Cross-cutting utilities: client locking, transaction skip, exception logging, browser download. |
+| `Framework/` | REFramework orchestration, unchanged. |
+| `Tests/` | Test cases and `Tests/Validation/` static checks. |
+
+`Main.xaml` stays at the project root because `project.json` and `entry-points.json` name it as the
+entry point. Invoke paths use the backslash separator used elsewhere in the project, and invoke
+captions are generated from the target path so they cannot drift.
 
 ### TD-003 — Configuration and secrets stay outside source control
 
@@ -61,6 +76,24 @@ exactly the point where a mistake is silent at design time and fails in producti
 components therefore keep explicit typed arguments, and workflows whose query contracts genuinely
 differ stay separate. This is why `Get USI Proposals.xaml` was not folded into
 `Get Supporting Document Pages.xaml`.
+
+### TD-007 — Extractions are proved equivalent before they are committed
+
+Every block moved out of a workflow is verified by reversing the identifier renames on the extracted
+body and comparing it against the original block from git, ignoring whitespace. The comparison folds
+identifier case, because VB.NET is case-insensitive and this project already mixes
+`in_transactionItem` and `in_TransactionItem` for the same argument. An extraction is not committed
+until that comparison returns equal and the reference validator reports no new errors against the
+`main` baseline.
+
+### TD-008 — UI application scopes are not split without UiPath Studio
+
+Activities inside an `NApplicationCard` take their target application context from that scope.
+Extracting them into a child workflow removes that context, so the child would need the browser or
+element passed in and the scope re-established. That cannot be verified here. `UCompare/Generate
+Policy Checklist.xaml` (154 activities), `Sagitta/Log In To Sagitta.xaml` (90) and the other
+UI-bound workflows are therefore left intact and are flagged for extraction in Studio, where the
+refactor can be exercised.
 
 ---
 
@@ -106,7 +139,7 @@ parameter collection (see TD-006).
 `Get Carrier Proposals.xaml` carried `Get_Prior_Policies`. Both files were retired by F-01, and the
 consolidated workflow uses the single accurate name `Get Supporting Document Pages`.
 
-### F-03 (M) — Oversized workflows
+### F-03 (M) — Oversized workflows — PARTIALLY RESOLVED
 
 | Workflow | Activities | Size | Note |
 | --- | --- | --- | --- |
@@ -115,20 +148,25 @@ consolidated workflow uses the single accurate name `Get Supporting Document Pag
 | `Main.xaml` | 120 | 112 KB | REFramework state machine, expected size |
 | `QuerySecondReviewDocuments.xaml` | 98 | 55 KB | 15 arguments |
 
-`UCompare Module.xaml` and `GetDataFromSagittaDBAndValidateAllScenarios.xaml` each carry several
-distinct responsibilities and are the two strongest candidates for extraction into focused
-workflows. `UCompare Module.xaml` maps to the discrete PDD steps §4.1.2.3 through §4.1.2.9, which
+`GetDataFromSagittaDBAndValidateAllScenarios.xaml` is resolved: it is now
+`Sagitta/Get Policy Data And Apply Exclusions.xaml` at 61 activities and 5 variables, down from 139
+and 16, after the four exclusion rules and the Snowflake query moved out.
+`UCompare Module.xaml`, now `UCompare/Generate Policy Checklist.xaml`, is unchanged and blocked on
+TD-008. `UCompare Module.xaml` maps to the discrete PDD steps §4.1.2.3 through §4.1.2.9, which
 gives a natural and traceable split. Extraction must be incremental — one PDD step per pull request.
 
-### F-04 (M) — `Check Business Exclusions/` is scaffolded but not implemented or wired
+### F-04 (M) — `Check Business Exclusions/` is scaffolded but not implemented or wired — RESOLVED
 
 Thirteen of the fourteen workflows contain two activities and zero arguments; they are empty stubs.
 `Check Business Exclusions - Main.xaml` orchestrates them with eleven `InvokeWorkflowFile` calls and
 a single `in_Transaction` argument. Nothing in the project references the folder. The exclusion rules
 of `PDD §4.1.1.6` are currently served by `GetDataFromSagittaDBAndValidateAllScenarios.xaml`.
 
-This is unfinished work, not dead code. Direction is required before either completing the module or
-removing it; see open item 2 in the PDD draft.
+Resolved by implementing the rules properly: the four exclusion rules that were live but embedded in
+the Sagitta orchestrator now exist as real workflows under `Business Rules/`, and the empty
+scaffolding was removed. Git history preserves it. The stubs the scaffolding named for drawer, region,
+division and producer exclusions have no implementation anywhere in the project; those `PDD §4.1.1.6`
+rules remain unimplemented and are recorded as an open item.
 
 ### F-05 (M) — Per-environment values baked into UI target descriptors
 
@@ -212,13 +250,13 @@ behind Studio validation.
 | 1 | Documentation baseline — PDD draft and this record | — | No | Not required |
 | 2 | Configuration key inventory | F-11 | No | Not required |
 | 3 | Ignore runtime output; untrack the committed exception screenshot | F-06 | No | Not required |
-| 4 | Correct stale invoke captions in `Framework/Process.xaml` | F-09 | No | Required |
+| 4 | ~~Correct stale invoke captions~~ — done, PR #5 (captions now generated from target path) | F-09 | No | Required |
 | 5 | Analysis: exception handling paths at each throw site | F-08 | No | Not required |
-| 6 | Extract one PDD step at a time from `UCompare Module.xaml` | F-03 | No | Required |
+| 6 | Extract one PDD step at a time from `UCompare/Generate Policy Checklist.xaml` — blocked, see TD-008 | F-03 | No | Required |
 | 7 | ~~Consolidate the document retrieval workflows~~ — done, PR #4 | F-01, F-02 | No | Required |
 | 8 | Confirm and correct per-environment UI target descriptors | F-05 | Possible | Required |
-| 9 | Normalise workflow naming per folder | F-10 | No | Required |
-| 10 | Resolve `Check Business Exclusions/` — complete or remove | F-04 | Possible | Required |
+| 9 | ~~Normalise workflow naming per folder~~ — done, PR #5 | F-10 | No | Required |
+| 10 | ~~Resolve `Check Business Exclusions/`~~ — removed, PR #5; rules implemented in `Business Rules/` | F-04 | Possible | Required |
 | 11 | Remove the disabled placeholder throw | F-07 | No | Required |
 
 Items 8 and 10 need a business or technical decision before they can start. Item 10 also depends on
@@ -230,3 +268,4 @@ open item 2 in the PDD draft.
 | --- | --- | --- |
 | 0.1 | 2026-09-16 | Initial technical decisions and Phase 1 refactor backlog. |
 | 0.2 | 2026-09-16 | F-01 and F-02 resolved by consolidating four document retrieval workflows; TD-006 added; validator added under `Tests/Validation/`. |
+| 0.3 | 2026-09-17 | TD-002 revised for the system and process area folder structure; TD-007 and TD-008 added; F-03 partially resolved, F-04, F-09 and F-10 resolved. |

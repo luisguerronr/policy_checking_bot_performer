@@ -23,28 +23,28 @@ upstream by MDS).
 
 ## 2. Repository layout
 
-REFramework (state machine) project, `Main.xaml` entry point, `project.json` targetFramework `Windows`,
-Studio 25.10.1.0, VB expression language.
+REFramework (state machine) project, `Main.xaml` entry point at the project root, `project.json`
+targetFramework `Windows`, Studio 25.10.1.0, VB expression language. Folders are named for the system
+or process area they address (TD-002, revised).
 
 | Path | Role |
 | --- | --- |
 | `Main.xaml` | REFramework state machine; reads `PerformerConfigFile` Orchestrator asset for the Config workbook path |
 | `Framework/` | InitAllSettings, InitAllApplications, GetTransactionData, Process, SetTransactionStatus, CloseAllApplications, KillAllProcesses, RetryCurrentTransaction, TakeScreenshot |
-| `Framework/Process.xaml` | Per-transaction orchestration (see §3) |
-| `Get_InProgress_Client_Codes.xaml` | Client-code concurrency control, invoked from `Main.xaml` |
-| `GetMatchingPolicyNumber/` | Sagitta login/logout, client page, policy-number best-match query |
-| `GetDataFromSagittaDBAndValidateAllScenarios.xaml` | Sagitta lookup + validation hub; invokes the task create/route/update workflows, `eligibilityCheckForCoverageCodeFromPolicyDoc.xaml`, `SetAttributeTasks.xaml`, `log exceptions and Raise exception.xaml` |
-| `Check Business Exclusions/` | 14 workflows covering the PDD 4.1.1.6 exclusion table (coverage code, department code, drawer, region, division, producer 1, servicer code, CNR, effective/expiration dates, exclusion list, Sagitta data, task setup, task attribute update) |
-| `CL - Binding Tasks/` | CL Binding task handling and closeout (PDD 4.1.1.11) |
-| `Secondary Review Documents/` | `Get Secondary Documents.xaml` orchestrates `Get Supporting Document Pages.xaml` (generic, four document types), `Get USI Proposals.xaml`, `Merge Pages*.xaml`, `Secondary Review Documents Validation.xaml`, `Cleanup Temp Folder.xaml` (PDD 4.1.2.2) |
-| `UCompare Module.xaml`, `UCompare Checklist/` | UCompare comparison generation and checklist upload to ImageRight (PDD 4.1.2.3–4.1.2.11) |
-| `Create Or Route Or Update Tasks in Imageright For Filed Policy Scenario.xaml`, `... For Mail Indexing Scenario.xaml` | PC2.0 task find/route/create (PDD 4.1.1.5, 4.1.1.9, 5.1.1–5.1.3) |
-| `Move New Mail Folder to Policy Folder in ImageRight.xaml` | PDD 4.1.1.10 |
-| `SetAttributeTasks.xaml` | ImageRight task attribute updates (PDD 4.2.x, 4.1.2.12) |
-| `QuerySecondReviewDocuments.xaml`, `GetSupportingDocumentsFromDB.xaml`, `GetPoliciesRelatedToTasks.xaml` | Supporting data queries |
-| `Check_Client_Lock.xaml`, `Skip_Current_Transaction.xaml` | Locking / transaction skip helpers |
+| `Business Rules/` | PDD 4.1.1.4 and 4.1.1.6 decisions, no UI, database or file access: coverage code eligibility, department code, carrier service center, marketing status, inactive policy |
+| `Sagitta/` | Sagitta and Snowflake integration: login/logout, client page, policy number matching, Snowflake query execution, policy data orchestration |
+| `ImageRight/Tasks/` | PC2.0 task create/route/update, task attributes, CL binding task handling and closure, policies related to tasks |
+| `ImageRight/Documents/` | Second review document queries, supporting document queries, checklist creation and upload |
+| `ImageRight/Folders/` | Policy year folder lookup, New Mail folder move |
+| `UCompare/` | `Generate Policy Checklist.xaml` — UCompare comparison generation (PDD 4.1.2.3–4.1.2.9) |
+| `Second Review Documents/` | PDD 4.1.2.2 gathering: orchestrator, generic page query, USI proposal query, merge, validation, temp cleanup |
+| `Shared/` | Cross-cutting utilities: client locking, in-progress client codes, transaction skip, exception logging, browser download |
 | `Tests/` | REFramework test cases (`Tests.xlsx` data); `Tests/Validation/validate_workflow_references.py` static reference and argument-contract checker |
 | `Data/Input`, `Data/Output`, `Data/Temp` | Runtime folders, placeholder-only in source control |
+| `Documentation/` | Live PDD, PDD draft, technical decisions |
+
+Invoke paths use the backslash separator throughout; invoke captions are generated from the target
+path so they cannot drift from the file they call.
 
 Dependencies (`project.json`): `ImageRightAPILibrary` 1.0.27, `Sagitta.Json.Extract.Library` 1.0.24,
 UiPath Database/Excel/PDF/Word/WebAPI/IntegrationService, Document Understanding + IntelligentOCR,
@@ -259,6 +259,35 @@ anywhere in the project; the configuration workbook path comes from the `Perform
 Orchestrator asset; secrets are referenced by asset name only; `UCompare Module.xaml` navigates via
 `in_Config("Ucompare_URL")`.
 
+### Structural refactor (PR #5)
+
+Workflow count 67 → 55. Thirty-three workflows moved into system and process area folders with
+descriptive English names; all references rewritten, separators normalised, 91 invoke captions
+regenerated from their target path. `Check Business Exclusions/` removed: 13 of its 14 workflows
+were empty stubs and nothing invoked the folder.
+
+Business rules extracted from `GetDataFromSagittaDBAndValidateAllScenarios.xaml`, now
+`Sagitta/Get Policy Data And Apply Exclusions.xaml`:
+
+| New workflow | Responsibility | Arguments |
+| --- | --- | --- |
+| `Business Rules/Check Department Code Exclusion.xaml` | PDD 4.1.1.6 department code 287/289 | `in_TransactionItem`, `in_SagittaRow`, `in_Config` |
+| `Business Rules/Check Carrier Service Center Exclusion.xaml` | PDD 4.1.1.6 department 288 and servicer code list | as above plus `in_CarrierServiceCenterCodes` |
+| `Business Rules/Check Marketing Status Exclusion.xaml` | PDD 4.1.1.6 CNR `M` | `in_TransactionItem`, `in_SagittaRow`, `in_Config` |
+| `Business Rules/Check Inactive Policy Exclusion.xaml` | PDD 4.1.1.6 CNR `Z`, and `C`/`N` with CNR date equal to effective date | as above |
+| `Sagitta/Get Policy Numbers From Snowflake.xaml` | Snowflake query execution, status polling and pagination | `in_TransactionItem`, `in_BestMatchPolicyNumber`, `in_Config`, `out_PolicyNumberResults` |
+
+The rule workflows receive the carrier service center codes table as an argument so they perform no
+file access; the workbook read stays in the orchestrator. The orchestrator fell from 139 activities
+and 16 variables to 61 and 5. Three variables — `finalSagittaQueryList`, `sagittaDT`,
+`filteredSagittaDT` — were declared but referenced nowhere and were removed.
+
+Not extracted, and why: `UCompare/Generate Policy Checklist.xaml` (154 activities),
+`Sagitta/Log In To Sagitta.xaml` (90) and the other UI-bound workflows hold their activities inside
+`NApplicationCard` scopes that supply the target application context. Splitting them requires
+passing the browser or element and re-establishing the scope, which cannot be verified without
+Studio (TD-008).
+
 ### Extracted and consolidated workflows
 
 `Secondary Review Documents/Get Supporting Document Pages.xaml` (new, PR #4) — single responsibility:
@@ -298,6 +327,12 @@ screenshot · 4 correct stale invoke captions · 5 exception-path analysis · 6 
 per folder · 10 resolve `Check Business Exclusions/` · 11 remove the disabled placeholder throw.
 Items 8 and 10 are blocked pending a decision.
 
+Verified PDD gap: the PDD 4.1.1.6 exclusions on drawer name (Commercial Lines only), region/location
+name (USR, AF, USICA, Training, Temp), division name (811) and producer 1 name (containing "Patra")
+have no implementation anywhere in the project. No workflow references `USICA`, `Patra`,
+`drawername`, `divisionname` or `producer1name`. The removed scaffolding named empty stubs for them.
+Whether MDS enforces these upstream or they are outstanding work needs confirming.
+
 Constraint: UiPath Studio and Robot are unavailable in the agent environment. Automated validation is
 limited to XML well-formedness, `InvokeWorkflowFile` reference integrity and project metadata
 integrity; `Tests/` cannot be executed here. Items 4 and 6 through 11 require Studio validation before
@@ -312,6 +347,13 @@ merge.
   metadata changed. (PR #2, merged as `c904d22`.)
 - 2026-09-16: Project memory updated with the Phase 1 assessment outcomes. (PR #3, merged as
   `cf6f888`.)
+- 2026-09-17: Structural refactor — 33 workflows reorganised into system and process area folders,
+  four PDD 4.1.1.6 exclusion rules and the Snowflake query extracted into dedicated workflows, dead
+  variables and the empty `Check Business Exclusions/` scaffolding removed. Workflow count 67 → 55.
+  Validation: 0 malformed XAML, 92 invoke sites checked, error set identical to the `main` baseline
+  (10 pre-existing, 0 introduced, 0 lost); all five extracted bodies proved equivalent to their
+  originals by reverse-rename comparison. UiPath Studio validation still outstanding per TD-004.
+  (PR #5.)
 - 2026-09-16: First refactor — consolidated four document retrieval workflows into
   `Get Supporting Document Pages.xaml`, redirected `Get Secondary Documents.xaml`, removed the four
   obsolete files, and added the static workflow reference validator. Workflow count 67 → 64.

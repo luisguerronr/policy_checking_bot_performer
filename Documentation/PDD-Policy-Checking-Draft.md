@@ -306,21 +306,24 @@ Current mapping of PDD requirements to workflows. `IMPL`
 | PDD requirement | Workflow |
 | --- | --- |
 | Framework orchestration, retries, transaction status | `Main.xaml`, `Framework/` |
-| Client-code concurrency control | `Get_InProgress_Client_Codes.xaml`, `Check_Client_Lock.xaml` |
-| §4.1.1.7 policy number matching and Sagitta lookup | `GetMatchingPolicyNumber/`, `GetDataFromSagittaDBAndValidateAllScenarios.xaml` |
-| §4.1.1.4 coverage code eligibility | `eligibilityCheckForCoverageCodeFromPolicyDoc.xaml` |
-| §4.1.1.6 exclusion rules | `Check Business Exclusions/` (scaffolded, not yet wired — see §8) |
-| §4.1.1.5 / §4.1.1.9 PC2.0 task create, route, update | `Create Or Route Or Update Tasks in Imageright For Filed Policy Scenario.xaml`, `... For Mail Indexing Scenario.xaml` |
-| §4.1.1.10 move New Mail items | `Move New Mail Folder to Policy Folder in ImageRight.xaml` |
-| §4.1.1.11 close CL Binding task | `CL - Binding Tasks/` |
-| §4.1.2.2 second review documents | `Secondary Review Documents/Get Secondary Documents.xaml` orchestrates `Get Supporting Document Pages.xaml` (carrier binder, carrier quote, carrier proposal, prior year policy), `Get USI Proposals.xaml` and `Merge Pages.xaml`, then `Secondary Review Documents Validation.xaml`; also `QuerySecondReviewDocuments.xaml`, `GetSupportingDocumentsFromDB.xaml` |
-| §4.1.2.3–4.1.2.9 UCompare comparison | `UCompare Module.xaml` |
-| §4.1.2.10–11 checklist upload | `UCompare Checklist/` |
-| §4.2 / §4.1.2.12 task attribute updates | `SetAttributeTasks.xaml` |
-| §2.3 exception logging | `log exceptions and Raise exception.xaml`, `Framework/TakeScreenshot.xaml` |
+| Client-code concurrency control | `Shared/Get In Progress Client Codes.xaml`, `Shared/Check Client Lock.xaml` |
+| §4.1.1.2 policy number matching | `Sagitta/Get Best Match Of Policy Number.xaml`, `Sagitta/Query Policy Number And Extract Best Policy.xaml`, `Sagitta/Open Client Page.xaml`, `Sagitta/Log In To Sagitta.xaml`, `Sagitta/Log Out From Sagitta.xaml` |
+| §4.1.1.7 Sagitta policy lookup | `Sagitta/Get Policy Numbers From Snowflake.xaml` (query execution), `Sagitta/Get Policy Data And Apply Exclusions.xaml` (row selection and orchestration) |
+| §4.1.1.4 coverage code eligibility | `Business Rules/Check Coverage Code Eligibility.xaml` |
+| §4.1.1.6 department code exclusion (287, 289) | `Business Rules/Check Department Code Exclusion.xaml` |
+| §4.1.1.6 carrier service center exclusion (department 288, servicer code list) | `Business Rules/Check Carrier Service Center Exclusion.xaml` |
+| §4.1.1.6 CNR `M`, marketing status | `Business Rules/Check Marketing Status Exclusion.xaml` |
+| §4.1.1.6 CNR `Z`, and `C`/`N` with CNR date equal to effective date | `Business Rules/Check Inactive Policy Exclusion.xaml` |
+| §4.1.1.6 drawer, region, division and producer 1 exclusions | Not implemented — see §8 |
+| §4.1.1.5 / §4.1.1.9 PC2.0 task create, route, update | `ImageRight/Tasks/Create Or Route Or Update Task For Filed Policy.xaml`, `ImageRight/Tasks/Create Or Route Or Update Task For Mail Indexing.xaml` |
+| §4.1.1.10 move New Mail items | `ImageRight/Folders/Move New Mail Folder To Policy Folder.xaml` |
+| §4.1.1.11 close CL Binding task | `ImageRight/Tasks/Handle CL Binding Task.xaml`, `ImageRight/Tasks/Close CL Binding Task.xaml` |
+| §4.1.2.2 second review documents | `Second Review Documents/Get Second Review Documents.xaml` orchestrating `Get Supporting Document Pages.xaml`, `Get USI Proposal Pages.xaml`, `Merge Pages.xaml` and `Validate Second Review Documents.xaml`; queries in `ImageRight/Documents/` |
+| §4.1.2.3–4.1.2.9 UCompare comparison | `UCompare/Generate Policy Checklist.xaml` |
+| §4.1.2.10–11 checklist upload | `ImageRight/Documents/Create Checklist Document.xaml`, `ImageRight/Documents/Upload Policy Checklist.xaml`, `ImageRight/Folders/Find Policy Year Folder Id.xaml` |
+| §4.2 / §4.1.2.12 task attribute updates | `ImageRight/Tasks/Set Task Attributes.xaml` |
+| §2.3 exception logging | `Shared/Log Exception And Raise.xaml`, `Framework/TakeScreenshot.xaml` |
 | §4.3 reassigned task loading | Not present in this repository — see §8 |
-
----
 
 ## 7.1 Current implementation behaviour not described in the live PDD
 
@@ -339,7 +342,7 @@ Recorded as observed, without inferred business intent.
 | # | Item | Status |
 | --- | --- | --- |
 | 1 | `PDD §4.3` loading of tasks reassigned from Automation Inquiry has no counterpart in this repository. Whether it is owned by a separate dispatcher project needs confirming. | `TBD` |
-| 2 | `Check Business Exclusions/` contains one orchestrating workflow and thirteen empty stub workflows, and nothing invokes it. Whether it supersedes the validation logic in `GetDataFromSagittaDBAndValidateAllScenarios.xaml` needs confirming. | `TBD` |
+| 2 | The `PDD §4.1.1.6` exclusions on drawer name (Commercial Lines only), region/location name (USR, AF, USICA, Training, Temp), division name (811) and producer 1 name (containing "Patra") have no implementation in this repository. The removed `Check Business Exclusions/` scaffolding named stubs for them but they were empty. Whether these are enforced upstream by MDS or are outstanding work needs confirming. | `TBD` |
 | 3 | Authoritative location, ownership and change control for the reference workbooks and SQL files in §3.3. | `TBD` |
 | 4 | `PDD §4.1.1.7–8` MDS policy ID resolution and policy year validation. | `TBD` |
 | 5 | SLA. | `TBD` |
@@ -353,3 +356,4 @@ Recorded as observed, without inferred business intent.
 | --- | --- | --- |
 | 0.1 | 2026-09-16 | Initial draft from the live PDD and a read-only survey of the implementation. |
 | 0.2 | 2026-09-16 | Implementation map updated for the consolidated document retrieval workflow; §7.1 added for current implementation behaviour outside the live PDD. |
+| 0.3 | 2026-09-17 | Implementation map rewritten for the system and process area structure, now tracing each §4.1.1.6 rule to its own workflow; §7.1 extended; open item 2 replaced with the four unimplemented exclusions. |
