@@ -1,0 +1,159 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Query_Supporting_Document_By_Policy" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_DbConnection" Type="InArgument(ui:DatabaseConnection)" />
+    <x:Property Name="in_SqlQueriesPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_SqlFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_DocumentTypeName" Type="InArgument(x:String)" />
+    <x:Property Name="in_ClientCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_PolicyId" Type="InArgument(x:String)" />
+    <x:Property Name="out_DocumentPath" Type="OutArgument(x:String)" />
+    <x:Property Name="out_DocumentFound" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Query_Supporting_Document_By_Policy_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+      <sco:Collection x:TypeArguments="x:String">
+        <x:String>System.Activities</x:String>
+        <x:String>System.Activities.Statements</x:String>
+        <x:String>System.Activities.Expressions</x:String>
+        <x:String>System.Activities.Validation</x:String>
+        <x:String>System.Activities.XamlIntegration</x:String>
+        <x:String>Microsoft.VisualBasic</x:String>
+        <x:String>Microsoft.VisualBasic.Activities</x:String>
+        <x:String>System</x:String>
+        <x:String>System.Collections</x:String>
+        <x:String>System.Collections.Generic</x:String>
+        <x:String>System.Collections.ObjectModel</x:String>
+        <x:String>System.Data</x:String>
+        <x:String>System.Diagnostics</x:String>
+        <x:String>System.Drawing</x:String>
+        <x:String>System.IO</x:String>
+        <x:String>System.Linq</x:String>
+        <x:String>System.Net.Mail</x:String>
+        <x:String>System.Xml</x:String>
+        <x:String>System.Xml.Linq</x:String>
+        <x:String>UiPath.Core</x:String>
+        <x:String>UiPath.Core.Activities</x:String>
+        <x:String>System.Windows.Markup</x:String>
+        <x:String>GlobalVariablesNamespace</x:String>
+        <x:String>GlobalConstantsNamespace</x:String>
+        <x:String>System.Reflection</x:String>
+        <x:String>UiPath.Excel</x:String>
+        <x:String>System.ComponentModel</x:String>
+        <x:String>System.Runtime.Serialization</x:String>
+        <x:String>System.Xml.Serialization</x:String>
+        <x:String>UiPath.Excel.Activities.Business</x:String>
+        <x:String>UiPath.Shared.Activities</x:String>
+        <x:String>UiPath.Platform.ResourceHandling</x:String>
+        <x:String>UiPath.Excel.Activities</x:String>
+        <x:String>System.Linq.Expressions</x:String>
+        <x:String>System.Numerics</x:String>
+        <x:String>UiPath.Database</x:String>
+        <x:String>System.Security</x:String>
+        <x:String>UiPath.Database.Activities</x:String>
+        <x:String>System.Activities.Runtime.Collections</x:String>
+      </sco:Collection>
+    </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+      <sco:Collection x:TypeArguments="AssemblyReference">
+        <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
+        <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+        <AssemblyReference>mscorlib</AssemblyReference>
+        <AssemblyReference>NPOI.Core</AssemblyReference>
+        <AssemblyReference>PresentationFramework</AssemblyReference>
+        <AssemblyReference>System</AssemblyReference>
+        <AssemblyReference>System.Activities</AssemblyReference>
+        <AssemblyReference>System.Collections</AssemblyReference>
+        <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+        <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+        <AssemblyReference>System.ComponentModel</AssemblyReference>
+        <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+        <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+        <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+        <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+        <AssemblyReference>System.Console</AssemblyReference>
+        <AssemblyReference>System.Core</AssemblyReference>
+        <AssemblyReference>System.Data</AssemblyReference>
+        <AssemblyReference>System.Data.Common</AssemblyReference>
+        <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+        <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+        <AssemblyReference>System.Drawing</AssemblyReference>
+        <AssemblyReference>System.Drawing.Common</AssemblyReference>
+        <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+        <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+        <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+        <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+        <AssemblyReference>System.IO.Packaging</AssemblyReference>
+        <AssemblyReference>System.Linq</AssemblyReference>
+        <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+        <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+        <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+        <AssemblyReference>System.Memory</AssemblyReference>
+        <AssemblyReference>System.Memory.Data</AssemblyReference>
+        <AssemblyReference>System.Net.Mail</AssemblyReference>
+        <AssemblyReference>System.ObjectModel</AssemblyReference>
+        <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+        <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+        <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+        <AssemblyReference>System.Private.Uri</AssemblyReference>
+        <AssemblyReference>System.Private.Xml</AssemblyReference>
+        <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+        <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+        <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+        <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+        <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+        <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+        <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+        <AssemblyReference>System.Security.Permissions</AssemblyReference>
+        <AssemblyReference>System.Xaml</AssemblyReference>
+        <AssemblyReference>System.Xml</AssemblyReference>
+        <AssemblyReference>System.Xml.Linq</AssemblyReference>
+        <AssemblyReference>UiPath.Database</AssemblyReference>
+        <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+        <AssemblyReference>UiPath.Excel</AssemblyReference>
+        <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+        <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+        <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+        <AssemblyReference>UiPath.Platform</AssemblyReference>
+        <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+        <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+        <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+        <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+        <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+        <AssemblyReference>UiPath.Workflow</AssemblyReference>
+        <AssemblyReference>WindowsBase</AssemblyReference>
+      </sco:Collection>
+    </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Query Supporting Document By Policy" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_SqlQuery" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Results" />
+    </Sequence.Variables>
+    <ui:LogMessage DisplayName="Log Query Start" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[$&quot;Querying ImageRight for {in_DocumentTypeName}&quot;]" />
+    <ui:ReadTextFile File="{x:Null}" Content="[str_SqlQuery]" DisplayName="Read Sql Query" FileName="[Path.Combine(in_SqlQueriesPath, in_SqlFileName)]" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="[dt_Results]" DisplayName="Run Query" ExistingDbConnection="[in_DbConnection]" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[str_SqlQuery]" TimeoutMS="300000">
+      <ui:ExecuteQuery.Parameters>
+        <InArgument x:TypeArguments="x:String" x:Key="@PolicyId">[in_PolicyId]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="@ClientCode">[in_ClientCode]</InArgument>
+      </ui:ExecuteQuery.Parameters>
+    </ui:ExecuteQuery>
+    <Assign DisplayName="Set Document Found" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[out_DocumentFound]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">[dt_Results IsNot Nothing AndAlso dt_Results.Rows.Count &gt; 0]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Extract Document Path" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_DocumentPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(dt_Results IsNot Nothing AndAlso dt_Results.Rows.Count &gt; 0, dt_Results(0)("FilePath").ToString, "")]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>
