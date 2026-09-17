@@ -86,14 +86,27 @@ identifier case, because VB.NET is case-insensitive and this project already mix
 until that comparison returns equal and the reference validator reports no new errors against the
 `main` baseline.
 
-### TD-008 — UI application scopes are not split without UiPath Studio
+### TD-008 — A UI application scope moves whole, never split (revised)
 
 Activities inside an `NApplicationCard` take their target application context from that scope.
-Extracting them into a child workflow removes that context, so the child would need the browser or
-element passed in and the scope re-established. That cannot be verified here. `UCompare/Generate
-Policy Checklist.xaml` (154 activities), `Sagitta/Log In To Sagitta.xaml` (90) and the other
-UI-bound workflows are therefore left intact and are flagged for extraction in Studio, where the
-refactor can be exercised.
+Lifting some of them into a child workflow removes that context, so the child would need the browser
+or element passed in and the scope re-established — not verifiable without Studio.
+
+Moving an **entire** card is a different operation and is safe: the card carries its own target
+application descriptor, so the child re-establishes the scope exactly as the parent did. That is how
+`UCompare/Generate Policy Checklist.xaml` was reduced from 153 activities to 42 — its two browser
+scopes moved out whole, not dissected. The original prohibition stands only for a card's internals.
+
+### TD-010 — Extracted files declare only the namespaces they use
+
+Building an extracted workflow from its parent's header carries namespace prefixes and assembly
+references the new body never uses. Where those point at Integration Service connector bundles they
+fail to resolve when the project opens in Studio, which is exactly what happened on the first pass
+and had to be repaired by hand.
+
+`Tests/Validation/validate_namespace_usage.py` now reports any prefix a workflow declares but does
+not use, keeping the structural prefixes Studio always emits. Every extraction prunes its header
+against that check before it is committed.
 
 ### TD-009 — The project's own scaffolding defines where business rules live
 
@@ -157,7 +170,7 @@ parameter collection (see TD-006).
 `Get Carrier Proposals.xaml` carried `Get_Prior_Policies`. Both files were retired by F-01, and the
 consolidated workflow uses the single accurate name `Get Supporting Document Pages`.
 
-### F-03 (M) — Oversized workflows — PARTIALLY RESOLVED
+### F-03 (M) — Oversized workflows — RESOLVED
 
 | Workflow | Activities | Size | Note |
 | --- | --- | --- | --- |
@@ -169,8 +182,11 @@ consolidated workflow uses the single accurate name `Get Supporting Document Pag
 `GetDataFromSagittaDBAndValidateAllScenarios.xaml` is resolved: it is now
 `Sagitta/Get Policy Data And Apply Exclusions.xaml` at 61 activities and 5 variables, down from 139
 and 16, after the four exclusion rules and the Snowflake query moved out.
-`UCompare Module.xaml`, now `UCompare/Generate Policy Checklist.xaml`, is unchanged and blocked on
-TD-008. `UCompare Module.xaml` maps to the discrete PDD steps §4.1.2.3 through §4.1.2.9, which
+`UCompare Module.xaml`, now `UCompare/Generate Policy Checklist.xaml`, is down from 153 activities
+and 30 variables to 42 and 11: its two browser scopes moved out whole as
+`Search Client In UCompare.xaml` and `Generate And Download Comparison.xaml` (TD-008, revised).
+`Query Second Review Documents.xaml` is down from 97 activities and 14 variables to 83 and 5 after
+its five repeated query blocks were replaced by two reusable query workflows. `UCompare Module.xaml` maps to the discrete PDD steps §4.1.2.3 through §4.1.2.9, which
 gives a natural and traceable split. Extraction must be incremental — one PDD step per pull request.
 
 ### F-04 (M) — `Check Business Exclusions/` is scaffolded but not implemented or wired — RESOLVED
@@ -270,7 +286,7 @@ behind Studio validation.
 | 3 | Ignore runtime output; untrack the committed exception screenshot | F-06 | No | Not required |
 | 4 | ~~Correct stale invoke captions~~ — done, PR #5 (captions now generated from target path) | F-09 | No | Required |
 | 5 | Analysis: exception handling paths at each throw site | F-08 | No | Not required |
-| 6 | Extract one PDD step at a time from `UCompare/Generate Policy Checklist.xaml` — blocked, see TD-008 | F-03 | No | Required |
+| 6 | ~~Extract from `UCompare/Generate Policy Checklist.xaml`~~ — done, PR #7 | F-03 | No | Required |
 | 7 | ~~Consolidate the document retrieval workflows~~ — done, PR #4 | F-01, F-02 | No | Required |
 | 8 | Confirm and correct per-environment UI target descriptors | F-05 | Possible | Required |
 | 9 | ~~Normalise workflow naming per folder~~ — done, PR #5 | F-10 | No | Required |
@@ -288,3 +304,4 @@ open item 2 in the PDD draft.
 | 0.2 | 2026-09-16 | F-01 and F-02 resolved by consolidating four document retrieval workflows; TD-006 added; validator added under `Tests/Validation/`. |
 | 0.3 | 2026-09-17 | TD-002 revised for the system and process area folder structure; TD-007 and TD-008 added; F-03 partially resolved, F-04, F-09 and F-10 resolved. |
 | 0.4 | 2026-09-17 | `Check Business Exclusions/` restored and adopted as the home for business rules (TD-009); `Business Rules/` removed. |
+| 0.5 | 2026-09-17 | TD-008 revised to permit moving a whole application card; TD-010 added after the namespace defect; F-03 resolved. |

@@ -318,8 +318,11 @@ Current mapping of PDD requirements to workflows. `IMPL`
 | §4.1.1.5 / §4.1.1.9 PC2.0 task create, route, update | `ImageRight/Tasks/Create Or Route Or Update Task For Filed Policy.xaml`, `ImageRight/Tasks/Create Or Route Or Update Task For Mail Indexing.xaml` |
 | §4.1.1.10 move New Mail items | `ImageRight/Folders/Move New Mail Folder To Policy Folder.xaml` |
 | §4.1.1.11 close CL Binding task | `ImageRight/Tasks/Handle CL Binding Task.xaml`, `ImageRight/Tasks/Close CL Binding Task.xaml` |
+| §4.1.2.2 second review document queries | `ImageRight/Documents/Query Second Review Documents.xaml` orchestrating `Query Supporting Document By Policy.xaml` (carrier binder, carrier quote, carrier proposal, prior year policy) and `Query USI Proposal Document.xaml` |
 | §4.1.2.2 second review documents | `Second Review Documents/Get Second Review Documents.xaml` orchestrating `Get Supporting Document Pages.xaml`, `Get USI Proposal Pages.xaml`, `Merge Pages.xaml` and `Validate Second Review Documents.xaml`; queries in `ImageRight/Documents/` |
-| §4.1.2.3–4.1.2.9 UCompare comparison | `UCompare/Generate Policy Checklist.xaml` |
+| §4.1.2.3–4.1.2.4 UCompare navigation and client search | `UCompare/Search Client In UCompare.xaml` |
+| §4.1.2.5–4.1.2.9 line of coverage, document upload, comparison and download | `UCompare/Generate And Download Comparison.xaml` |
+| §4.1.2.3–4.1.2.9 orchestration and client match selection | `UCompare/Generate Policy Checklist.xaml` |
 | §4.1.2.10–11 checklist upload | `ImageRight/Documents/Create Checklist Document.xaml`, `ImageRight/Documents/Upload Policy Checklist.xaml`, `ImageRight/Folders/Find Policy Year Folder Id.xaml` |
 | §4.2 / §4.1.2.12 task attribute updates | `ImageRight/Tasks/Set Task Attributes.xaml` |
 | §2.3 exception logging | `Shared/Log Exception And Raise.xaml`, `Framework/TakeScreenshot.xaml` |
@@ -358,3 +361,4 @@ Recorded as observed, without inferred business intent.
 | 0.2 | 2026-09-16 | Implementation map updated for the consolidated document retrieval workflow; §7.1 added for current implementation behaviour outside the live PDD. |
 | 0.3 | 2026-09-17 | Implementation map rewritten for the system and process area structure, now tracing each §4.1.1.6 rule to its own workflow; §7.1 extended; open item 2 replaced with the four unimplemented exclusions. |
 | 0.4 | 2026-09-17 | Business rule workflows relocated into the project's `Check Business Exclusions/` scaffolding and its naming pattern. |
+| 0.5 | 2026-09-17 | Implementation map split the UCompare steps across the extracted browser scopes and recorded the reusable ImageRight document query workflows. |

@@ -324,7 +324,43 @@ Behaviour note: the only observable difference is Orchestrator log wording. Row-
 unchanged; the "Querying for …" lines and the prior policy identifier label differ in wording. No
 branch depends on log text. Recorded in the PDD draft §7.1.
 
+### Second modularisation pass (PR #7)
+
+`ImageRight/Documents/Query Second Review Documents.xaml` repeated the same query machinery five
+times. Extracted into two reusable workflows; parent 97 → 83 activities, 14 → 5 variables.
+
+| New workflow | Responsibility | Call sites |
+| --- | --- | --- |
+| `ImageRight/Documents/Query Supporting Document By Policy.xaml` | Read the SQL file, run it on the shared connection with `@PolicyId` and `@ClientCode`, return path and found flag | 4 (carrier binder, carrier quote, carrier proposal, prior year policy) |
+| `ImageRight/Documents/Query USI Proposal Document.xaml` | Same, parameterised by client code, policy year and effective date | 1 |
+
+The dictionary and counter updates stay in the caller, so neither extracted workflow holds shared
+state. The database connection was created inside the Carrier Binder block and reused by every later
+query, so it was lifted ahead of the first query rather than removed with that block.
+
+`UCompare/Generate Policy Checklist.xaml` 153 → 42 activities, 30 → 11 variables:
+
+| New workflow | Responsibility | Arguments |
+| --- | --- | --- |
+| `UCompare/Search Client In UCompare.xaml` | PDD 4.1.2.3–4.1.2.4 navigation and client search | `in_Config`, `in_TransactionItem`, `out_ClientSearchResults` |
+| `UCompare/Generate And Download Comparison.xaml` | PDD 4.1.2.5–4.1.2.9 line of coverage, uploads, generation, download | `in_Config`, `in_TransactionItem`, `in_CoverageCode`, `in_taskId`, `in_DocumentArrayOfPaths`, `out_PolicyCheckingListFilePath` |
+
+Both are whole `NApplicationCard` scopes moved intact (TD-008, revised): a card carries its own
+target application descriptor, so the child re-establishes the browser scope exactly as the parent
+did. Splitting a card's internals remains prohibited without Studio.
+
+Verified while extracting: `clientCode` appears in the comparison scope only inside selector URL
+literals containing a hard-coded client GUID, not as a variable — it is not an input to that
+workflow, and it re-confirms finding F-05. `bool_Success` is written in the comparison scope and read
+nowhere, so that assignment is inert and was kept as a local rather than promoted to an output.
+
 ### Validation tooling
+
+`Tests/Validation/validate_namespace_usage.py` reports any namespace prefix a workflow declares but
+does not use. It was added after the first extraction pass copied parent headers wholesale, carrying
+Integration Service connector prefixes into workflows that never used them; those failed to resolve
+in Studio and the project owner repaired them by hand in commit `ac9f8e3`. Every extraction now
+prunes its header against this check before commit (TD-010).
 
 `Tests/Validation/validate_workflow_references.py` parses every workflow's `x:Members` and every
 `InvokeWorkflowFile` site, resolving XML namespace prefixes to URIs so type aliases compare
@@ -347,6 +383,12 @@ have no implementation anywhere in the project. No workflow references `USICA`, 
 `drawername`, `divisionname` or `producer1name`. The removed scaffolding named empty stubs for them.
 Whether MDS enforces these upstream or they are outstanding work needs confirming.
 
+Studio round-trip, commit `ac9f8e3`: the project owner opened the project in Studio and committed its
+repairs. Studio added four assembly references to every workflow, removed the namespace prefixes and
+connector assemblies the first extraction pass had carried over, dropped unused `in_Username`,
+`in_Password` and `in_SecurePassword` arguments from two ImageRight workflows, bumped `projectVersion`
+to 1.1.2-alpha, removed `entry-points.json`, and re-indented most files. No activity logic changed.
+
 Constraint: UiPath Studio and Robot are unavailable in the agent environment. Automated validation is
 limited to XML well-formedness, `InvokeWorkflowFile` reference integrity and project metadata
 integrity; `Tests/` cannot be executed here. Items 4 and 6 through 11 require Studio validation before
@@ -361,6 +403,13 @@ merge.
   metadata changed. (PR #2, merged as `c904d22`.)
 - 2026-09-16: Project memory updated with the Phase 1 assessment outcomes. (PR #3, merged as
   `cf6f888`.)
+- 2026-09-17: Restored the live PDD, the PDD draft, the technical decisions record and this memory
+  file, which commit `ac9f8e3` removed alongside its Studio repairs. `entry-points.json` was left
+  removed: it is a project file Studio dropped, not documentation. Added the namespace validator and
+  a second modularisation pass over the two flows that had been moved without logic change.
+  Validation: 70 workflows, 0 malformed, 110 invoke sites, error set identical to the `main`
+  baseline, 0 unused namespace declarations, both UCompare cards and all extracted bodies proved
+  equivalent to their originals. (PR #7.)
 - 2026-09-17: Restored `Check Business Exclusions/` in full and moved the five business rule
   workflows into it under its naming pattern; `Business Rules/` removed. Also corrected 102 invoke
   captions project-wide: the generator used `os.path.basename`, which does not split backslashes on
