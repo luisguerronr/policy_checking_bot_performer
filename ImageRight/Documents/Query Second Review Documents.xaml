@@ -667,7 +667,7 @@
                       </Assign.Value>
                     </Assign>
                     <ui:LogMessage DisplayName="Log - No Supporting Documents" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Warn" Message="[&quot;No supporting documents found for Second Review&quot;]" />
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetAttributeTaks - No Supporting Docs" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SetAttributeTasks.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ImageRight\Tasks\Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:Boolean" x:Key="in_SuccessFlow">False</InArgument>
                         <InArgument x:TypeArguments="s:String[]" x:Key="in_attributeIdArray">[New String() {"116", "108", "101", "100"}]</InArgument>

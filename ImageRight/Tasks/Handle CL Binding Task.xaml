@@ -185,7 +185,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:GetRobotCredential>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="4. Close CL Binding Task - Invoke Workflow File (CL - Binding Tasks\Close CL Binding Task.xaml)" sap:VirtualizedContainerService.HintSize="382,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="CL - Binding Tasks\Close CL Binding Task.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ImageRight\Tasks\Close CL Binding Task - Invoke Workflow File (ImageRight\Tasks\Close CL Binding Task.xaml)" sap:VirtualizedContainerService.HintSize="382,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Close CL Binding Task.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_Username">[strUsername]</InArgument>
               <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SecurePassword">[securePassword]</InArgument>

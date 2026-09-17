@@ -208,7 +208,7 @@
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
     <ui:LogMessage DisplayName="Log Message - Log Queue Item Reference" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;[Queue] Reference: &quot; + in_TransactionItem.Reference]" />
     <ui:LogMessage DisplayName="Log Message - Log Queue Policy Number" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[Queue] PolicyNumber: &quot; + in_TransactionItem.SpecificContent(&quot;PolicyNumber&quot;).ToString]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetBestMatchOfPolicyNumber - Invoke Workflow File (GetMatchingPolicyNumber\GetBestMatchOfPolicyNumber.xaml)" sap:VirtualizedContainerService.HintSize="452,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="GetMatchingPolicyNumber\GetBestMatchOfPolicyNumber.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Sagitta\Get Best Match Of Policy Number - Invoke Workflow File (Sagitta\Get Best Match Of Policy Number.xaml)" sap:VirtualizedContainerService.HintSize="452,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Sagitta\Get Best Match Of Policy Number.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_config">[in_Config]</InArgument>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_transactionItem">[in_TransactionItem]</InArgument>
@@ -217,7 +217,7 @@
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message - Log Best Match Policy Number" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;[Best Match] Queue PolicyNumber: &quot; + in_TransactionItem.SpecificContent(&quot;PolicyNumber&quot;).ToString + &quot; | Sagitta Best Match: &quot; + matchedPolicyNumber + &quot; | MatchType: &quot; + policyIsExactMatchOrNot.ToString]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetDataFromSagittaDBAndValidateAllScenarios - Invoke Workflow File (GetDataFromSagittaDBAndValidateAllScenarios.xaml)" sap:VirtualizedContainerService.HintSize="452,182" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="GetDataFromSagittaDBAndValidateAllScenarios.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Sagitta\Get Policy Data And Apply Exclusions - Invoke Workflow File (Sagitta\Get Policy Data And Apply Exclusions.xaml)" sap:VirtualizedContainerService.HintSize="452,182" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sagitta\Get Policy Data And Apply Exclusions.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_config">[in_Config]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_sagittaDT_ExpirationDate">[expirationDateFromSagitta]</OutArgument>
@@ -237,7 +237,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.1.14" DisplayName="Move New Mail Folder to Policy Folder in ImageRight 2 - Invoke Workflow File (Move New Mail Folder to Policy Folder in ImageRight 2.xaml)" sap:VirtualizedContainerService.HintSize="416,208" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Move New Mail Folder to Policy Folder in ImageRight.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.1.14" DisplayName="ImageRight\Folders\Move New Mail Folder To Policy Folder - Invoke Workflow File (ImageRight\Folders\Move New Mail Folder To Policy Folder.xaml)" sap:VirtualizedContainerService.HintSize="416,208" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="ImageRight\Folders\Move New Mail Folder To Policy Folder.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
               <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
@@ -262,7 +262,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.2.12 - 4.1.2.13" DisplayName="CL_Binding Task - Invoke Workflow File (CL - Binding Tasks\CL_Binding Task.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="CL - Binding Tasks\CL_Binding Task.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.2.12 - 4.1.2.13" DisplayName="ImageRight\Tasks\Handle CL Binding Task - Invoke Workflow File (ImageRight\Tasks\Handle CL Binding Task.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Handle CL Binding Task.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
@@ -289,7 +289,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Create Or Update Task in Imageright For Filed Policy Scenario - Invoke Workflow File (Create Or Update Task in Imageright For Filed Policy Scenario.xaml)" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Create Or Route Or Update Tasks in Imageright For Filed Policy Scenario.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ImageRight\Tasks\Create Or Route Or Update Task For Filed Policy - Invoke Workflow File (ImageRight\Tasks\Create Or Route Or Update Task For Filed Policy.xaml)" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Create Or Route Or Update Task For Filed Policy.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_config">[in_config]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_CurrentItemID">[CurrentPolicyId]</InArgument>
@@ -323,7 +323,7 @@
       </If.Else>
     </If>
     <s:Main out_summaryFilePath="{x:Null}" DisplayName="Extract Json files From Sagitta" sap:VirtualizedContainerService.HintSize="451.2,538.4" sap2010:WorkflowViewState.IdRef="Main_7" in_clientCode="[in_TransactionItem.SpecificContent(&quot;clientcode&quot;).ToString]" in_coverageCode="[CoverageCode]" in_policyNumber="[matchedPolicyNumber]" in_sagittaAccountOrchestratorCred="[in_config(&quot;SagittaPCXCredentials&quot;)]" in_sagittaURLAssetName="[in_config(&quot;SagittaPCXUrl&quot;)]" in_sharedFilePathForCoverageCodeEligibility="[Path.combine(in_Config(&quot;SharedFolderPath&quot;),&quot;Mapping docs&quot;,&quot;Cvg Code to LOC Mapping.xlsx&quot;)]" in_sharedFilePathForCustomScreenMappingPath="[Path.combine(in_Config(&quot;SharedFolderPath&quot;),&quot;Mapping docs&quot;,&quot;Custom screens Mapping.xlsx&quot;)]" in_sharedFilePathForJsonMappingFile="[Path.combine(in_Config(&quot;SharedFolderPath&quot;),&quot;Mapping docs&quot;,&quot;Field Name Mapping.xlsx&quot;)]" in_sharedFolderPathForExtractedJsons="[Path.combine(in_Config(&quot;SharedFolderPath&quot;),&quot;Extracted Jsons&quot;)]" needPriorItemID="True" out_jsonFilePathForCurrentItemID="[currentJsonFilePath]" out_jsonFilePathForPriorItemID="[priorJsonFilePath]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.6" DisplayName="Get Secondary Documents - Invoke Workflow File (Secondary Review Documents\Get Secondary Documents.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Secondary Review Documents\Get Secondary Documents.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.6" DisplayName="Second Review Documents\Get Second Review Documents - Invoke Workflow File (Second Review Documents\Get Second Review Documents.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Second Review Documents\Get Second Review Documents.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
         <OutArgument x:TypeArguments="si:FileInfo" x:Key="out_USIProposal">[USIProposal]</OutArgument>
@@ -342,7 +342,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.7 - 4.1.3.12" DisplayName="UCompare Module - Invoke Workflow File (UCompare Module.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="UCompare Module.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.7 - 4.1.3.12" DisplayName="UCompare\Generate Policy Checklist - Invoke Workflow File (UCompare\Generate Policy Checklist.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="UCompare\Generate Policy Checklist.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PolicyId">[CurrentPolicyId]</InArgument>
@@ -358,7 +358,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.13" DisplayName="Upload UCompare Checklist to ImageRight - Invoke Workflow File (UCompare Checklist\Upload UCompare Checklist to ImageRight.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="UCompare Checklist\Upload UCompare Checklist to ImageRight.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.13" DisplayName="ImageRight\Documents\Upload Policy Checklist - Invoke Workflow File (ImageRight\Documents\Upload Policy Checklist.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="ImageRight\Documents\Upload Policy Checklist.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
@@ -372,7 +372,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.14" DisplayName="SetAttributeTasks - Invoke Workflow File (SetAttributeTasks.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="SetAttributeTasks.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.14" DisplayName="ImageRight\Tasks\Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="451.2,212" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Boolean" x:Key="in_SuccessFlow">True</InArgument>
         <InArgument x:TypeArguments="s1:String[]" x:Key="in_taskAttributeValueArray">[{"Policy Detailing","Servicer 1","2"}]</InArgument>
@@ -386,7 +386,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.15" DisplayName="Cleanup Temp Folder - Invoke Workflow File (Secondary Review Documents\Cleanup Temp Folder.xaml)" sap:VirtualizedContainerService.HintSize="451.2,203.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Secondary Review Documents\Cleanup Temp Folder.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="4.1.3.15" DisplayName="Second Review Documents\Clean Up Temp Folder - Invoke Workflow File (Second Review Documents\Clean Up Temp Folder.xaml)" sap:VirtualizedContainerService.HintSize="451.2,203.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Second Review Documents\Clean Up Temp Folder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config]</InArgument>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>

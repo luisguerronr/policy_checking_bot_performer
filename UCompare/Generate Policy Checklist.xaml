@@ -1463,7 +1463,7 @@
                         <InArgument x:TypeArguments="x:String">[string.Empty]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Download any File through Edge - Invoke Workflow File (Download any File through Edge.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Download any File through Edge.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Shared\Download File Through Edge - Invoke Workflow File (Shared\Download File Through Edge.xaml)" sap:VirtualizedContainerService.HintSize="451.2,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Shared\Download File Through Edge.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_fileName">[in_TransactionItem.SpecificContent("clientcode").ToString+"_Policy Checklist"]</InArgument>
                         <OutArgument x:TypeArguments="x:String" x:Key="out_filePath">[policyCheckingListFilePath]</OutArgument>

@@ -283,7 +283,7 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Extract Best Policy - Invoke Workflow File (GetMatchingPolicyNumber\Navigate to Policy Tab and Extract Best Policy.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="GetMatchingPolicyNumber\Query Policy Number and Extract Best Policy.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Sagitta\Query Policy Number And Extract Best Policy - Invoke Workflow File (Sagitta\Query Policy Number And Extract Best Policy.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sagitta\Query Policy Number And Extract Best Policy.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <OutArgument x:TypeArguments="x:Int32" x:Key="out_MatchType">[out_PolicyMatchType]</OutArgument>
           <OutArgument x:TypeArguments="x:String" x:Key="out_AppropriatePolicyNumber">[out_MatchPolicyNumberInSagitta]</OutArgument>

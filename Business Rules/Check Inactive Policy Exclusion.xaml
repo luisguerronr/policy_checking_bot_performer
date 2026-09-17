@@ -225,7 +225,7 @@
                       <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send To: 299&#xA;Assignment: 300&#xA;ManualUser: 301&#xA;Priority: 18114175&#xA;Reason Not Checked: 362372805&#xA;Inquiry Reason: 721347338&#xA;Other Inquiry Reason: 721347339&#xA;Response to Inquiry: 721347340" DisplayName="SetAttributeTasks - Invoke Workflow File (SetAttributeTasks.xaml)" sap:VirtualizedContainerService.HintSize="416,318.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SetAttributeTasks.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send To: 299&#xA;Assignment: 300&#xA;ManualUser: 301&#xA;Priority: 18114175&#xA;Reason Not Checked: 362372805&#xA;Inquiry Reason: 721347338&#xA;Other Inquiry Reason: 721347339&#xA;Response to Inquiry: 721347340" DisplayName="ImageRight\Tasks\Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="416,318.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:Boolean" x:Key="in_SuccessFlow">False</InArgument>
                       <InArgument x:TypeArguments="s:String[]" x:Key="in_taskAttributeValueArray">[{"Internal Processing","servicer 1","Inactive Policy (flat canceled/nonrenewed with no coverage in force, Z status)","2"}]</InArgument>
@@ -251,7 +251,7 @@
                       <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="log exceptions and Raise exception - Invoke Workflow File (log exceptions and Raise exception.xaml)" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="log exceptions and Raise exception.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Shared\Log Exception And Raise - Invoke Workflow File (Shared\Log Exception And Raise.xaml)" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Shared\Log Exception And Raise.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_policyNumber">[in_TransactionItem.SpecificContent("PolicyNumber").ToString]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
