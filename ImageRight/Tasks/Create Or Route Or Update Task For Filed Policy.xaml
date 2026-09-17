@@ -274,7 +274,7 @@
                       <InArgument x:TypeArguments="x:String">[tasksDT.rows(0)("TaskId").ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ImageRight\Tasks\Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:Boolean" x:Key="in_SuccessFlow">True</InArgument>
                       <InArgument x:TypeArguments="s:String[]" x:Key="in_taskAttributeValueArray">[{"Automation Processing","assigned","2"}]</InArgument>

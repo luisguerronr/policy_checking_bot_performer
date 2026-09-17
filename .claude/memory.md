@@ -31,7 +31,7 @@ or process area they address (TD-002, revised).
 | --- | --- |
 | `Main.xaml` | REFramework state machine; reads `PerformerConfigFile` Orchestrator asset for the Config workbook path |
 | `Framework/` | InitAllSettings, InitAllApplications, GetTransactionData, Process, SetTransactionStatus, CloseAllApplications, KillAllProcesses, RetryCurrentTransaction, TakeScreenshot |
-| `Business Rules/` | PDD 4.1.1.4 and 4.1.1.6 decisions, no UI, database or file access: coverage code eligibility, department code, carrier service center, marketing status, inactive policy |
+| `Check Business Exclusions/` | PDD 4.1.1.4 and 4.1.1.6 decisions, no UI, database or file access. The project's own scaffolding and naming pattern `Check Business Exclusions - <rule>` (TD-009). Implemented: coverage code, department code, servicer code, CNR marketing status, CNR inactive policy. Empty stubs reserved for drawer name, region name, division name, producer 1 name, CNR, effective and expiration date, get exclusion list, get Sagitta data, update task attributes, setup PC2.0 task, and `Main` |
 | `Sagitta/` | Sagitta and Snowflake integration: login/logout, client page, policy number matching, Snowflake query execution, policy data orchestration |
 | `ImageRight/Tasks/` | PC2.0 task create/route/update, task attributes, CL binding task handling and closure, policies related to tasks |
 | `ImageRight/Documents/` | Second review document queries, supporting document queries, checklist creation and upload |
@@ -207,7 +207,14 @@ not recorded here).
    without a new request.
 7. Several `Framework/Process.xaml` activity DisplayNames still name older file names ("… ImageRight 2",
    "Create Or Update Task …"); the `WorkflowFileName` attributes are correct. Cosmetic only.
-8. Pre-existing argument type mismatches in `Tests/`: `GetTransactionDataTestCase.xaml`,
+8. `Check Business Exclusions - Main.xaml` is restored unchanged as scaffolding and is still not
+   invoked by anything. It calls its child workflows without arguments, so the validator reports
+   warnings for the three stubs that are now implemented. Wiring it would change process control
+   flow and is out of scope until the process owner decides.
+9. `Check Business Exclusions - Check CNR.xaml` remains an empty stub while the two CNR rules live in
+   `Check CNR Marketing Status.xaml` and `Check CNR Inactive Policy.xaml`. Confirm whether to fold
+   them into the single `Check CNR` slot or keep them separate.
+10. Pre-existing argument type mismatches in `Tests/`: `GetTransactionDataTestCase.xaml`,
    `InitAllApplicationsTestCase.xaml`, `InitAllSettingsTestCase.xaml`, `ProcessTestCase.xaml` and
    `WorkflowTestCaseTemplate.xaml` pass `Dictionary(String, Object)` where the framework workflows
    declare `Dictionary(String, String)` (10 sites). `GetTransactionDataTestCase.xaml` and
@@ -263,22 +270,29 @@ Orchestrator asset; secrets are referenced by asset name only; `UCompare Module.
 
 Workflow count 67 → 55. Thirty-three workflows moved into system and process area folders with
 descriptive English names; all references rewritten, separators normalised, 91 invoke captions
-regenerated from their target path. `Check Business Exclusions/` removed: 13 of its 14 workflows
-were empty stubs and nothing invoked the folder.
+regenerated from their target path. `Check Business Exclusions/` is retained in full: it is the project's own
+scaffolding showing how the exclusion rules should be organised, and the extracted rules fill the
+stubs that name them (TD-009). An earlier pass in this workstream removed it as dead code, which was
+wrong — the files were empty by design, not by neglect.
 
 Business rules extracted from `GetDataFromSagittaDBAndValidateAllScenarios.xaml`, now
 `Sagitta/Get Policy Data And Apply Exclusions.xaml`:
 
 | New workflow | Responsibility | Arguments |
 | --- | --- | --- |
-| `Business Rules/Check Department Code Exclusion.xaml` | PDD 4.1.1.6 department code 287/289 | `in_TransactionItem`, `in_SagittaRow`, `in_Config` |
-| `Business Rules/Check Carrier Service Center Exclusion.xaml` | PDD 4.1.1.6 department 288 and servicer code list | as above plus `in_CarrierServiceCenterCodes` |
-| `Business Rules/Check Marketing Status Exclusion.xaml` | PDD 4.1.1.6 CNR `M` | `in_TransactionItem`, `in_SagittaRow`, `in_Config` |
-| `Business Rules/Check Inactive Policy Exclusion.xaml` | PDD 4.1.1.6 CNR `Z`, and `C`/`N` with CNR date equal to effective date | as above |
+| `Check Business Exclusions - Check Department Code.xaml` | PDD 4.1.1.6 department code 287/289 | `in_TransactionItem`, `in_SagittaRow`, `in_Config` |
+| `Check Business Exclusions - Check Servicer Code.xaml` | PDD 4.1.1.6 department 288 and servicer code list | as above plus `in_CarrierServiceCenterCodes` |
+| `Check Business Exclusions - Check CNR Marketing Status.xaml` | PDD 4.1.1.6 CNR `M` | `in_TransactionItem`, `in_SagittaRow`, `in_Config` |
+| `Check Business Exclusions - Check CNR Inactive Policy.xaml` | PDD 4.1.1.6 CNR `Z`, and `C`/`N` with CNR date equal to effective date | as above |
 | `Sagitta/Get Policy Numbers From Snowflake.xaml` | Snowflake query execution, status polling and pagination | `in_TransactionItem`, `in_BestMatchPolicyNumber`, `in_Config`, `out_PolicyNumberResults` |
 
-The rule workflows receive the carrier service center codes table as an argument so they perform no
-file access; the workbook read stays in the orchestrator. The orchestrator fell from 139 activities
+The rule workflows live in `Check Business Exclusions/` and follow its naming pattern. Three fill
+existing stubs (coverage code, department code, servicer code); the two CNR rules are new files
+extending the pattern, because the scaffolding had a single `Check CNR` slot and PDD 4.1.1.6 defines
+two distinct CNR rules. `Check Business Exclusions - Check CNR.xaml` is therefore left as an empty
+stub — open question for the process owner. The rule workflows receive the carrier service center
+codes table as an argument so they perform no file access; the workbook read stays in the
+orchestrator. The orchestrator fell from 139 activities
 and 16 variables to 61 and 5. Three variables — `finalSagittaQueryList`, `sagittaDT`,
 `filteredSagittaDT` — were declared but referenced nowhere and were removed.
 
@@ -347,6 +361,9 @@ merge.
   metadata changed. (PR #2, merged as `c904d22`.)
 - 2026-09-16: Project memory updated with the Phase 1 assessment outcomes. (PR #3, merged as
   `cf6f888`.)
+- 2026-09-17: Restored `Check Business Exclusions/` in full and moved the five business rule
+  workflows into it under its naming pattern; `Business Rules/` removed. Validation: 66 workflows,
+  0 malformed, 103 invoke sites, error set identical to the `main` baseline. (PR #5.)
 - 2026-09-17: Structural refactor — 33 workflows reorganised into system and process area folders,
   four PDD 4.1.1.6 exclusion rules and the Snowflake query extracted into dedicated workflows, dead
   variables and the empty `Check Business Exclusions/` scaffolding removed. Workflow count 67 → 55.

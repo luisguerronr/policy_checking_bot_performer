@@ -149,7 +149,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ImageRight\Tasks\Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:Boolean" x:Key="in_SuccessFlow">False</InArgument>
               <InArgument x:TypeArguments="s:String[]" x:Key="in_taskAttributeValueArray">[{"299","300","362372805","18114175"}]</InArgument>

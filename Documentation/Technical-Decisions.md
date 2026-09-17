@@ -30,7 +30,7 @@ structure follows the systems and process areas the PDD describes:
 
 | Folder | Contents |
 | --- | --- |
-| `Business Rules/` | `PDD §4.1.1.4` and `§4.1.1.6` decisions. No UI, database or file access. |
+| `Check Business Exclusions/` | `PDD §4.1.1.4` and `§4.1.1.6` decisions, following the project's own pre-existing scaffolding and its `Check Business Exclusions - <rule>` naming. No UI, database or file access. |
 | `Sagitta/` | Sagitta and Snowflake integration: login, client page, policy number matching, policy data retrieval. |
 | `ImageRight/Tasks/` | Task create, route, update, attribute setting and closure. |
 | `ImageRight/Documents/` | Document queries and uploads. |
@@ -94,6 +94,24 @@ element passed in and the scope re-established. That cannot be verified here. `U
 Policy Checklist.xaml` (154 activities), `Sagitta/Log In To Sagitta.xaml` (90) and the other
 UI-bound workflows are therefore left intact and are flagged for extraction in Studio, where the
 refactor can be exercised.
+
+### TD-009 — The project's own scaffolding defines where business rules live
+
+`Check Business Exclusions/` was scaffolding the project authors created to show how the exclusion
+rules should be organised after refactoring: one workflow per rule, named
+`Check Business Exclusions - <rule>`, with a `Main` orchestrator, shared data loaders
+(`Get Sagitta Data`, `Get Exclusion List`) and a shared `Update Task Attributes`. The files were
+empty, so an earlier pass in this workstream read them as dead code and removed them. That was wrong:
+empty files created deliberately as a structural guide are a design input, not dead code.
+
+The folder is restored in full and is the home for business rules. Extracted rules fill the stub that
+names them; rules with no matching stub follow the same naming. Stubs for rules that are not yet
+implemented stay empty and are left for future use. `Business Rules/`, introduced by that earlier
+pass, is removed.
+
+Rule of thumb this sets: an unreferenced file is only dead code once its author confirms it. Where a
+question about intent has already been raised and not answered, it stays open rather than being
+resolved unilaterally inside a larger change.
 
 ---
 
@@ -162,11 +180,11 @@ Thirteen of the fourteen workflows contain two activities and zero arguments; th
 a single `in_Transaction` argument. Nothing in the project references the folder. The exclusion rules
 of `PDD §4.1.1.6` are currently served by `GetDataFromSagittaDBAndValidateAllScenarios.xaml`.
 
-Resolved by implementing the rules properly: the four exclusion rules that were live but embedded in
-the Sagitta orchestrator now exist as real workflows under `Business Rules/`, and the empty
-scaffolding was removed. Git history preserves it. The stubs the scaffolding named for drawer, region,
-division and producer exclusions have no implementation anywhere in the project; those `PDD §4.1.1.6`
-rules remain unimplemented and are recorded as an open item.
+Resolved by implementing the rules in place: the four exclusion rules that were live but embedded in
+the Sagitta orchestrator now fill the scaffolding they were designed for, under
+`Check Business Exclusions/` (TD-009). The stubs for drawer, region, division and producer
+exclusions stay empty because those `PDD §4.1.1.6` rules have no implementation anywhere in the
+project; they are recorded as an open item.
 
 ### F-05 (M) — Per-environment values baked into UI target descriptors
 
@@ -256,7 +274,7 @@ behind Studio validation.
 | 7 | ~~Consolidate the document retrieval workflows~~ — done, PR #4 | F-01, F-02 | No | Required |
 | 8 | Confirm and correct per-environment UI target descriptors | F-05 | Possible | Required |
 | 9 | ~~Normalise workflow naming per folder~~ — done, PR #5 | F-10 | No | Required |
-| 10 | ~~Resolve `Check Business Exclusions/`~~ — removed, PR #5; rules implemented in `Business Rules/` | F-04 | Possible | Required |
+| 10 | ~~Resolve `Check Business Exclusions/`~~ — retained and populated, PR #5 | F-04 | Possible | Required |
 | 11 | Remove the disabled placeholder throw | F-07 | No | Required |
 
 Items 8 and 10 need a business or technical decision before they can start. Item 10 also depends on
@@ -269,3 +287,4 @@ open item 2 in the PDD draft.
 | 0.1 | 2026-09-16 | Initial technical decisions and Phase 1 refactor backlog. |
 | 0.2 | 2026-09-16 | F-01 and F-02 resolved by consolidating four document retrieval workflows; TD-006 added; validator added under `Tests/Validation/`. |
 | 0.3 | 2026-09-17 | TD-002 revised for the system and process area folder structure; TD-007 and TD-008 added; F-03 partially resolved, F-04, F-09 and F-10 resolved. |
+| 0.4 | 2026-09-17 | `Check Business Exclusions/` restored and adopted as the home for business rules (TD-009); `Business Rules/` removed. |
