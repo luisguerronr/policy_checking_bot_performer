@@ -362,8 +362,12 @@ merge.
 - 2026-09-16: Project memory updated with the Phase 1 assessment outcomes. (PR #3, merged as
   `cf6f888`.)
 - 2026-09-17: Restored `Check Business Exclusions/` in full and moved the five business rule
-  workflows into it under its naming pattern; `Business Rules/` removed. Validation: 66 workflows,
-  0 malformed, 103 invoke sites, error set identical to the `main` baseline. (PR #5.)
+  workflows into it under its naming pattern; `Business Rules/` removed. Also corrected 102 invoke
+  captions project-wide: the generator used `os.path.basename`, which does not split backslashes on
+  POSIX, so folder paths had leaked into the name half of every regenerated caption. Validation:
+  66 workflows, 0 malformed, 103 invoke sites, error set identical to the `main` baseline; the 11
+  untouched scaffolding files byte-identical to their originals.
+  (PR #5, merged as `500e197`. PR #4 closed as superseded.)
 - 2026-09-17: Structural refactor — 33 workflows reorganised into system and process area folders,
   four PDD 4.1.1.6 exclusion rules and the Snowflake query extracted into dedicated workflows, dead
   variables and the empty `Check Business Exclusions/` scaffolding removed. Workflow count 67 → 55.
