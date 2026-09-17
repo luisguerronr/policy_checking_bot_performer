@@ -1,14 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Get_Carrier_Binder" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Supporting_Document_Pages" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_QueryFileConfigKey" Type="InArgument(x:String)" />
+    <x:Property Name="in_DocumentTypeName" Type="InArgument(x:String)" />
     <x:Property Name="in_ClientCode" Type="InArgument(x:String)" />
     <x:Property Name="in_PolicyId" Type="InArgument(x:String)" />
-    <x:Property Name="out_CarrierBinderPages" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DocumentPages" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap2010:WorkflowViewState.IdRef>Get_Carrier_Binder_1</sap2010:WorkflowViewState.IdRef>
+  <sap2010:WorkflowViewState.IdRef>Get_Supporting_Document_Pages_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -104,7 +106,7 @@
       <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Carrier_Binder" sap:VirtualizedContainerService.HintSize="2147.6,982.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get Supporting Document Pages" sap:VirtualizedContainerService.HintSize="2147.6,982.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Query" />
     </Sequence.Variables>
@@ -113,16 +115,16 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Querying for carrier binders.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[$&quot;Querying for {in_DocumentTypeName} pages.&quot;]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[$&quot;Client Code: {in_ClientCode}&quot;]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[$&quot;Policy Id: {in_PolicyId}&quot;]" />
-    <ui:ReadTextFile File="{x:Null}" Content="[Query]" DisplayName="Read Text File" FileName="[in_Config(&quot;SecondaryDocsCarrierBinderQuery&quot;).ToString]" sap:VirtualizedContainerService.HintSize="449.6,123.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" ConnectionString="[in_Config(&quot;IRDatabaseConnectionstring&quot;).ToString]" DataTable="[out_CarrierBinderPages]" DisplayName="Run Query" sap:VirtualizedContainerService.HintSize="449.6,147.2" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="Microsoft.Data.SqlClient" Sql="[Query]">
+    <ui:ReadTextFile File="{x:Null}" Content="[Query]" DisplayName="Read Text File" FileName="[in_Config(in_QueryFileConfigKey).ToString]" sap:VirtualizedContainerService.HintSize="449.6,123.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" ConnectionString="[in_Config(&quot;IRDatabaseConnectionstring&quot;).ToString]" DataTable="[out_DocumentPages]" DisplayName="Run Query" sap:VirtualizedContainerService.HintSize="449.6,147.2" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="Microsoft.Data.SqlClient" Sql="[Query]">
       <ui:ExecuteQuery.Parameters>
         <InArgument x:TypeArguments="x:String" x:Key="ClientCode">[in_ClientCode]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="PolicyId">[in_PolicyId]</InArgument>
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[$&quot;{out_CarrierBinderPages.RowCount} carrier binder pages found.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[$&quot;{out_DocumentPages.RowCount} {in_DocumentTypeName} pages found.&quot;]" />
   </Sequence>
 </Activity>

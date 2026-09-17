@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Check_Business_Exclusions_Check_Department_Code" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uiascb="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_queryExecutionStatus_Retrieve.Bundle;assembly=CF005E5CDB6_queryExe.GTWu63CW5KD1MoAiT2YvRLo2" xmlns:uiascb1="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_queryExecutionResults_List_C5FKGEVNTPHIJFNWCFFB5COOC4SIMHY.Bundle;assembly=CF005E5CDB6_queryExe.sBIQ72jJHxC1maAfo30eG8R3" xmlns:uiascb2="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_executeQuery_List_5I1Q0U3QA80GUUXUFIH760PF7FDTQ6A.Bundle;assembly=CF005E5CDB6_executeQ.0hArs1A4cNK1R0xyA1ASN1" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Check_Business_Exclusions_Check_CNR_Inactive_Policy" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uiascb="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_queryExecutionStatus_Retrieve.Bundle;assembly=CF005E5CDB6_queryExe.GTWu63CW5KD1MoAiT2YvRLo2" xmlns:uiascb1="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_queryExecutionResults_List_C5FKGEVNTPHIJFNWCFFB5COOC4SIMHY.Bundle;assembly=CF005E5CDB6_queryExe.sBIQ72jJHxC1maAfo30eG8R3" xmlns:uiascb2="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CF005E5CDB6_executeQuery_List_5I1Q0U3QA80GUUXUFIH760PF7FDTQ6A.Bundle;assembly=CF005E5CDB6_executeQ.0hArs1A4cNK1R0xyA1ASN1" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_SagittaRow" Type="InArgument(sd:DataRow)" />
@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap2010:WorkflowViewState.IdRef>Check_Business_Exclusions_Check_Department_Code_1</sap2010:WorkflowViewState.IdRef>
+  <sap2010:WorkflowViewState.IdRef>Check_Business_Exclusions_Check_CNR_Inactive_Policy_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
       <sco:Collection x:TypeArguments="x:String">
         <x:String>System.Activities</x:String>
@@ -194,8 +194,8 @@
         <AssemblyReference>C5D2F5448FB_queryExe.yKTdLdoqMD1onJJI3nJaSA2</AssemblyReference>
       </sco:Collection>
     </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Check Department Code Exclusion" sap2010:WorkflowViewState.IdRef="Sequence_1">
-  <If Condition="[in_SagittaRow(&quot;DEPARTMENT_CODE&quot;).ToString=&quot;287&quot; or in_SagittaRow(&quot;DEPARTMENT_CODE&quot;).ToString=&quot;289&quot;]" DisplayName="If - department code is eligible or not" sap:VirtualizedContainerService.HintSize="556.8,983.2" sap2010:WorkflowViewState.IdRef="If_4">
+  <Sequence DisplayName="Check Inactive Policy Exclusion" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <If Condition="[in_SagittaRow(&quot;CANCEL_NONRENEW_RENEW_CODE&quot;).ToString=&quot;Z&quot; or ((in_SagittaRow(&quot;CANCEL_NONRENEW_RENEW_CODE&quot;).ToString=&quot;C&quot; or in_SagittaRow(&quot;CANCEL_NONRENEW_RENEW_CODE&quot;).ToString=&quot;N&quot;) and in_SagittaRow(&quot;CANCEL_NONRENEW_RENEW_DATE&quot;).ToString=(convert.ToDateTime(in_TransactionItem.SpecificContent(&quot;EffectiveDate&quot;))).ToString(&quot;yyyy-MM-dd&quot;))]" DisplayName="If - CNR is Z, C, N" sap:VirtualizedContainerService.HintSize="556.8,1052.8" sap2010:WorkflowViewState.IdRef="If_6">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -203,31 +203,32 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,820" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,820" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[in_TransactionItem.Reference.startswith(&quot;MAILIX&quot;)]" sap:VirtualizedContainerService.HintSize="451.2,756" sap2010:WorkflowViewState.IdRef="If_13">
+            <If Condition="[in_TransactionItem.Reference.startswith(&quot;MAILIX&quot;)]" sap:VirtualizedContainerService.HintSize="451.2,756" sap2010:WorkflowViewState.IdRef="If_17">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,382.4" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,382.4" sap2010:WorkflowViewState.IdRef="Sequence_35">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send To: 299&#xA;Assignment: 300&#xA;ManualUser: 301&#xA;Priority: 18114175&#xA;Reason Not Checked: 362372805&#xA;Inquiry Reason: 721347338&#xA;Other Inquiry Reason: 721347339&#xA;Response to Inquiry: 721347340" DisplayName="Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="416,318.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send To: 299&#xA;Assignment: 300&#xA;ManualUser: 301&#xA;Priority: 18114175&#xA;Reason Not Checked: 362372805&#xA;Inquiry Reason: 721347338&#xA;Other Inquiry Reason: 721347339&#xA;Response to Inquiry: 721347340" DisplayName="Set Task Attributes - Invoke Workflow File (ImageRight\Tasks\Set Task Attributes.xaml)" sap:VirtualizedContainerService.HintSize="416,318.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="ImageRight\Tasks\Set Task Attributes.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:Boolean" x:Key="in_SuccessFlow">False</InArgument>
-                      <InArgument x:TypeArguments="s:String[]" x:Key="in_taskAttributeValueArray">[{"Internal Processing","servicer 1","Ineligible Department (287, 289)","2"}]</InArgument>
+                      <InArgument x:TypeArguments="s:String[]" x:Key="in_taskAttributeValueArray">[{"Internal Processing","servicer 1","Inactive Policy (flat canceled/nonrenewed with no coverage in force, Z status)","2"}]</InArgument>
                       <InArgument x:TypeArguments="s:String[]" x:Key="in_attributeIdArray">[{"299","300","362372805","18114175"}]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_taskId">[in_TransactionItem.SpecificContent("taskid").ToString]</InArgument>
                       <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_config">[in_Config]</InArgument>
@@ -243,14 +244,14 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,240" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,240" sap2010:WorkflowViewState.IdRef="Sequence_36">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Log Exception And Raise - Invoke Workflow File (Shared\Log Exception And Raise.xaml)" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Shared\Log Exception And Raise.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Log Exception And Raise - Invoke Workflow File (Shared\Log Exception And Raise.xaml)" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Shared\Log Exception And Raise.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_policyNumber">[in_TransactionItem.SpecificContent("PolicyNumber").ToString]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
@@ -266,10 +267,11 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,24.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,94.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Sequence>

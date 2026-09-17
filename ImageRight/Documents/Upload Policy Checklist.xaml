@@ -187,7 +187,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:GetRobotCredential>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="1. Find Policy Checklist File in ImageRight" sap:VirtualizedContainerService.HintSize="382,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="UCompare Checklist\Find Policy Year Folder ID.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Find Policy Year Folder Id - Invoke Workflow File (ImageRight\Folders\Find Policy Year Folder Id.xaml)" sap:VirtualizedContainerService.HintSize="382,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ImageRight\Folders\Find Policy Year Folder Id.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_ClientCode">[in_TransactionItem.SpecificContent("clientcode").ToString]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_FolderTypeID">[in_Config("ImageRightPolicyTermFolderTypeId")]</InArgument>
@@ -201,7 +201,7 @@
               <OutArgument x:TypeArguments="x:String" x:Key="out_PolicyYearFolderId">[strPolicyYearFolderId]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="2. Create Checklist Document in ImageRight and Upload UCompare Spreadsheet - Invoke Workflow File (UCompare Checklist\Create Checklist Document in ImageRight and Upload UCompare Spreadsheet.xaml)" sap:VirtualizedContainerService.HintSize="382,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="UCompare Checklist\Create Checklist Document in ImageRight.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Create Checklist Document - Invoke Workflow File (ImageRight\Documents\Create Checklist Document.xaml)" sap:VirtualizedContainerService.HintSize="382,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ImageRight\Documents\Create Checklist Document.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_PolicyYearFolderId">[strPolicyYearFolderId]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_CoverageCode">[in_CoverageCode]</InArgument>

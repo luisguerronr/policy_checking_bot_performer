@@ -150,7 +150,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Merge Pages - Refine Page List - Invoke Workflow File (Secondary Review Documents\Merge Pages - Refine Page List.xaml)" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Secondary Review Documents\Merge Pages - Refine Page List.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Merge Pages - Refine Page List - Invoke Workflow File (Second Review Documents\Merge Pages - Refine Page List.xaml)" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Second Review Documents\Merge Pages - Refine Page List.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_DocType">[in_DocType]</InArgument>
               <OutArgument x:TypeArguments="scg:IList(x:String)" x:Key="out_PageList">[PageList]</OutArgument>
